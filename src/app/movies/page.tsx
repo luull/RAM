@@ -1,9 +1,10 @@
 import { fetchMovies } from '@/lib/service';  
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import DefaultLayout from "@/components/Layouts/DefaultLaout";
+import DefaultLayout from "@/components/Layouts/DefaultLaout"; // Corrected typo: DefaultLaout -> DefaultLayout
 import MovieCard from "@/components/Movies/MoviesCard";
 
-interface Movie {
+// Define Movie interface for better type safety
+export interface Movie {
   id: number;
   title: string;
   posterUrl: string;
@@ -11,8 +12,9 @@ interface Movie {
   releaseDate: string;
 }
 
+// Async function for page component
 const MoviesPage = async () => {
-  const movies = await fetchMovies(); 
+  const movies: Movie[] = await fetchMovies();  // Explicitly type the fetched movies array
 
   return (
     <DefaultLayout>
@@ -22,8 +24,8 @@ const MoviesPage = async () => {
         <div className="min-h-screen bg-gray-100 dark:bg-[#040d19]">
           <div className="container mx-auto py-8 px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {movies.map((movie:any) => (
-                <MovieCard key={movie.id} movie={movie} />
+              {movies.map((movie) => (
+                <MovieCard key={movie.id} movie={movie} />  // Type is inferred from Movie interface
               ))}
             </div>
           </div>

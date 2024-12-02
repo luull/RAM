@@ -1,6 +1,9 @@
+// In your service file (e.g., src/lib/service.ts)
+
+import { Movie } from '@/app/movies/page';
 import axios from 'axios';
 
-export const fetchMovies = async () => {
+export const fetchMovies = async (): Promise<Movie[]> => {  // Ensure the return type is correctly typed
   try {
     const response = await axios.get('https://api.themoviedb.org/3/movie/popular', {
       params: {
