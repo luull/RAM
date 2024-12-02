@@ -52,7 +52,7 @@ const MovieCard = ({ movie }: MovieProps) => {
             <span>4.5</span> {/* Example Rating */}
           </div>
           
-          <Link href={`/seat-selection/${movie.id}`}
+          <Link href={`/seatselection/${movie.id}`}
             className="flex items-center bg-secondary text-white py-2 px-4 rounded-lg hover:bg-opacity-90 focus:outline-none"
           >
             <TicketIcon className="h-5 w-5 mr-2" />
