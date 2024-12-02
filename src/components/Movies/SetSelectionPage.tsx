@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 interface SeatSelectionPageProps {
-  movieId: string;
+  movieId?: string;
 }
 
 const SeatSelectionPage = ({ movieId }: SeatSelectionPageProps) => {
