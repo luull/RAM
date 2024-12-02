@@ -9,7 +9,7 @@ const ProfileBox = () => {
       <div className="overflow-hidden rounded-[10px] bg-white shadow-1 dark:bg-gray-dark dark:shadow-card">
         <div className="relative z-20 h-35 md:h-65">
           <Image
-            src="/images/cover/cover-01.png"
+            src="/./images/cover/cover-01.png"
             alt="profile cover"
             className="h-full w-full rounded-tl-[10px] rounded-tr-[10px] object-cover object-center"
             width={970}
@@ -56,7 +56,7 @@ const ProfileBox = () => {
           <div className="relative z-30 mx-auto -mt-22 h-30 w-full max-w-30 rounded-full bg-white/20 p-1 backdrop-blur sm:h-44 sm:max-w-[176px] sm:p-3">
             <div className="relative drop-shadow-2">
               <Image
-                src="/images/user/user31.png"
+                src="/./images/user/user31.png"
                 width={160}
                 height={160}
                 className="overflow-hidden rounded-full"

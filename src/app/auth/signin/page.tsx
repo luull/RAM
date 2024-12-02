@@ -31,14 +31,14 @@ const SignIn: React.FC = () => {
               <Link className="mb-10 justify-center flex" href="/">
                 <Image
                   className="hidden dark:block"
-                  src={"/images/logo/CINEMAGO-dark.png"}
+                  src={"/./images/logo/CINEMAGO-dark.png"}
                   alt="Logo"
                   width={276}
                   height={32}
                 />
                 <Image
                   className="dark:hidden"
-                  src={"/images/logo/CINEMAGO-light.png"}
+                  src={"/./images/logo/CINEMAGO-light.png"}
                   alt="Logo"
                   width={276}
                   height={32}
@@ -59,7 +59,7 @@ const SignIn: React.FC = () => {
 
               <div>
                 <Image
-                  src={"/images/grids/grid-02.svg"}
+                  src={"/./images/grids/grid-02.svg"}
                   alt="Logo"
                   width={305}
                   height={100}
