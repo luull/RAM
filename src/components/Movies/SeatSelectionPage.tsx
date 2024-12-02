@@ -37,7 +37,7 @@ const SeatSelectionPage = ({ movie }: SeatSelectionPageProps) => {
     <div className="bg-gray-100 dark:bg-[#040d19] min-h-screen">
       <div className="max-w-6xl mx-auto bg-white dark:bg-[#040d19] dark:text-white rounded-lg shadow-lg p-6">
       <h1 className="text-3xl font-semibold text-center text-gray-800 mb-6">
-          Pilih Kursi
+          Pilih Kursi Film {movie}
         </h1>
         <div className="grid grid-cols-1 gap-6">
           {/* Seat Selection (3/4) */}
@@ -91,13 +91,13 @@ const SeatSelectionPage = ({ movie }: SeatSelectionPageProps) => {
   <div className="w-2/3 flex justify-end flex-col">
   <h2 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">Kursi Terpilih:</h2>
             {/* Count of Selected Seats */}
-            <div className="mb-4">
-              <span className="text-xl font-bold text-gray-800 dark:text-white">Total Kursi Terpilih: </span>
+            <div className="mb-1">
+              <span className="text-xl mb-0 font-bold text-gray-800 dark:text-white">Total Kursi Terpilih: </span>
               <span className="text-xl text-secondary font-bold">{selectedSeats.length}</span>
             </div>
             {/* Selected Seats List */}
             {selectedSeats.length > 0 && (
-              <span className="text-gray-700 dark:text-white">
+              <span className="text-gray-700 mb-1 dark:text-white">
                 {selectedSeats.map((seat) => seat.toUpperCase()).join(", ")}
               </span>
             )}

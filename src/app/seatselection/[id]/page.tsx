@@ -1,14 +1,13 @@
-// src/app/seatselection/[slug]/page.tsx
 
 import { fetchMovies } from '@/lib/service';  // Fetch movies from your API or database
 import DefaultLayout from "@/components/Layouts/DefaultLaout"; // Ensure this is correctly imported
 import SeatSelectionPage from "@/components/Movies/SeatSelectionPage"; // Your seat selection component
 
-const SeatSelection = async ({ params }: { params: { slug: string } }) => {
-  const { slug } = params;
+const SeatSelection = async ({ params }: { params: { id: string } }) => {
+  const { id } = params;
 
   const movies = await fetchMovies(); // Fetch movies
-  const movie = movies.find((movie) => movie.title.toString() === slug);
+  const movie = movies.find((movie) => movie.id.toString() === id.toString());
 
   if (!movie) {
     return <p>Film tidak ditemukan.</p>;
