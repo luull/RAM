@@ -1,24 +1,24 @@
-"use client";
-import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import DefaultLayout from "@/components/Layouts/DefaultLaout"; // Fixed typo: DefaultLaout -> DefaultLayout
-import SeatSelectionPage from "@/components/Movies/SeatSelectionPage"; // Fixed typo: SetSelectionPage -> SeatSelectionPage
-import { useParams } from 'next/navigation';
-import { useRouter } from "next/router";
+// app/seatselection/[slug]/page.tsx
+import { fetchMovies } from '@/lib/service'; // Fetch the list of movies
+import DefaultLayout from "@/components/Layouts/DefaultLaout";
+import SeatSelectionPage from "@/components/Movies/SeatSelectionPage";
 
-const SeatSelection = () => {
-    const router = useRouter()
-  if (!router.query.slug) {
-    return <p>Film tidak ditemukan.</p>; // Handle case when the id is missing
-  }
-
+const SeatSelection = ({ movieSlug }: { movieSlug: string }) => {
   return (
     <DefaultLayout>
       <div className="mx-auto max-w-7xl">
-        <Breadcrumb pageName="Daftar Film" />
-        <SeatSelectionPage movie={router.query.slug as string} /> {/* Pass movieId prop to the SeatSelectionPage */}
+        <SeatSelectionPage movie={movieSlug} />
       </div>
     </DefaultLayout>
   );
 };
+
+export async function generateStaticParams() {
+  const movies = await fetchMovies(); // Fetch movies from your API or database
+
+  return movies.map((movie:any) => ({
+    slug: movie.id.toString(), // Assuming the movie has an `id` you can use as a slug
+  }));
+}
 
 export default SeatSelection;
