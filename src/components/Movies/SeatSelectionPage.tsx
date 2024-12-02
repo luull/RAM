@@ -3,10 +3,10 @@
 import { useState } from "react";
 
 interface SeatSelectionPageProps {
-  movieId?: string;
+  movie?: string;
 }
 
-const SeatSelectionPage = ({ movieId }: SeatSelectionPageProps) => {
+const SeatSelectionPage = ({ movie }: SeatSelectionPageProps) => {
   const totalRows = 10; // Total rows per seat section
   const totalSeatsPerRow = 10; // Total seats per row
   const [seats, setSeats] = useState<number[][]>( 
@@ -30,7 +30,7 @@ const SeatSelectionPage = ({ movieId }: SeatSelectionPageProps) => {
   };
 
   const handleSubmit = () => {
-    alert(`Selected Seats for Movie ${movieId}: ${selectedSeats.join(", ")}`);
+    alert(`Selected Seats for Movie ${movie}: ${selectedSeats.join(", ")}`);
   };
 
   return (

@@ -3,11 +3,11 @@ import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import DefaultLayout from "@/components/Layouts/DefaultLaout"; // Fixed typo: DefaultLaout -> DefaultLayout
 import SeatSelectionPage from "@/components/Movies/SeatSelectionPage"; // Fixed typo: SetSelectionPage -> SeatSelectionPage
 import { useParams } from 'next/navigation';
+import { useRouter } from "next/router";
 
 const SeatSelection = () => {
-  const { id } = useParams<{ id: string }>(); // Adding type for the 'id' parameter
-
-  if (!id) {
+    const router = useRouter()
+  if (!router.query.slug) {
     return <p>Film tidak ditemukan.</p>; // Handle case when the id is missing
   }
 
@@ -15,7 +15,7 @@ const SeatSelection = () => {
     <DefaultLayout>
       <div className="mx-auto max-w-7xl">
         <Breadcrumb pageName="Daftar Film" />
-        <SeatSelectionPage movieId={id} /> {/* Pass movieId prop to the SeatSelectionPage */}
+        <SeatSelectionPage movie={router.query.slug as string} /> {/* Pass movieId prop to the SeatSelectionPage */}
       </div>
     </DefaultLayout>
   );
