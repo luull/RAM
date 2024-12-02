@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
-    "apexcharts": "^3.45.2",
     "axios": "^1.7.8",
     "flatpickr": "^4.6.13",
     "jsvectormap": "^1.5.3",
