@@ -1,24 +1,35 @@
-"use client";
-import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import DefaultLayout from "@/components/Layouts/DefaultLaout"; 
-import SeatSelectionPage from "@/components/Movies/SeatSelectionPage"; 
-import { useParams } from 'next/navigation';
-import { useRouter } from "next/router";
+// src/app/seatselection/[slug]/page.tsx
 
-const SeatSelection = () => {
-    const router = useRouter()
-  if (!router.query.slug) {
-    return <p>Film tidak ditemukan.</p>; 
+import { fetchMovies } from '@/lib/service';  // Fetch movies from your API or database
+import DefaultLayout from "@/components/Layouts/DefaultLaout"; // Ensure this is correctly imported
+import SeatSelectionPage from "@/components/Movies/SeatSelectionPage"; // Your seat selection component
+
+const SeatSelection = async ({ params }: { params: { slug: string } }) => {
+  const { slug } = params;
+
+  const movies = await fetchMovies(); // Fetch movies
+  const movie = movies.find((movie) => movie.title.toString() === slug);
+
+  if (!movie) {
+    return <p>Film tidak ditemukan.</p>;
   }
 
   return (
     <DefaultLayout>
       <div className="mx-auto max-w-7xl">
-        <Breadcrumb pageName="Daftar Film" />
-        <SeatSelectionPage movie={router.query.slug as string} /> 
+        <SeatSelectionPage movie={movie.title} />
       </div>
     </DefaultLayout>
   );
 };
+
+// This function is used to generate all the paths that should be statically pre-rendered
+export async function generateStaticParams() {
+  const movies = await fetchMovies(); // Fetch the list of movies
+
+  return movies.map((movie) => ({
+    slug: movie.id.toString(),  // Each dynamic route path will be generated with these slugs
+  }));
+}
 
 export default SeatSelection;
