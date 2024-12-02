@@ -27,7 +27,7 @@ export async function generateStaticParams() {
   const movies = await fetchMovies(); // Fetch the list of movies
 
   return movies.map((movie) => ({
-    slug: movie.id.toString(),  // Each dynamic route path will be generated with these slugs
+    id: movie.id.toString(),  // Each dynamic route path will be generated with these slugs
   }));
 }
 
