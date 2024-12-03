@@ -3,25 +3,17 @@ import DefaultLayout from "@/components/Layouts/DefaultLaout";
 import React from "react";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import SeatSelectionPage from "@/components/Movies/SeatSelectionPage";
-import { fetchMovies } from "@/lib/service";
+import { fetchMovies } from "@/types/movie";
 
 export const metadata: Metadata = {
   title: "CINEMAGO | Seat Selection",
   description: "Choose your seat for the movie.",
 };
 
-export async function generateStaticParams() {
-  const movies = await fetchMovies();
-
-  return movies.map((movie) => ({
-    id: movie.id.toString(),
-  }));
-}
-
 const SeatSelectionPageComponent: React.FC<{ params: { id: string } }> = async ({ params }) => {
   const { id } = params;
 
-  const movies = await fetchMovies();
+  const movies = fetchMovies;
   const movie = movies.find((movie) => movie.id.toString() === id.toString());
 
   if (!movie) {
