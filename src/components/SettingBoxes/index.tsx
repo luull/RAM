@@ -244,7 +244,7 @@ const SettingBoxes = () => {
                   <div className="h-14 w-14 rounded-full">
                     <>
                       <Image
-                        src={`${prefix}/user/user-03.png`}
+                        src={`${prefix}/images/user/user-03.png`}
                         width={55}
                         height={55}
                         alt="User"

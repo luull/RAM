@@ -6,7 +6,7 @@ import { prefix } from "@/utils/prefix";
 const chatData: Chat[] = [
   {
     active: true,
-    avatar: `${prefix}/user/user-01.png`,
+    avatar: `${prefix}/images/user/user-01.png`,
     name: "Devid Heilo",
     text: "Hello, how are you?",
     time: "12 min",
@@ -15,7 +15,7 @@ const chatData: Chat[] = [
   },
   {
     active: true,
-    avatar: `${prefix}/user/user-02.png`,
+    avatar: `${prefix}/images/user/user-02.png`,
     name: "Henry Fisher",
     text: "I am waiting for you",
     time: "5:54 PM",
@@ -24,7 +24,7 @@ const chatData: Chat[] = [
   },
   {
     active: null,
-    avatar: `${prefix}/user/user-04.png`,
+    avatar: `${prefix}/images/user/user-04.png`,
     name: "Wilium Smith",
     text: "Where are you now?",
     time: "10:12 PM",
@@ -34,7 +34,7 @@ const chatData: Chat[] = [
   {
     active: true,
     seen: true,
-    avatar: `${prefix}/user/user-05.png`,
+    avatar: `${prefix}/images/user/user-05.png`,
     name: "Henry Deco",
     text: "Thank you so much!",
     time: "Sun",
@@ -43,7 +43,7 @@ const chatData: Chat[] = [
   },
   {
     active: false,
-    avatar: `${prefix}/user/user-06.png`,
+    avatar: `${prefix}/images/user/user-06.png`,
     name: "Jubin Jack",
     text: "Hello, how are you?",
     time: "Oct 23",

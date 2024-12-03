@@ -6,27 +6,27 @@ import { prefix } from "@/utils/prefix";
 
 const notificationList = [
   {
-    image: `${prefix}/user/user-15.png`,
+    image: `${prefix}/images/user/user-15.png`,
     title: "Piter Joined the Team!",
     subTitle: "Congratulate him",
   },
   {
-    image: `${prefix}/user/user-02.png`,
+    image: `${prefix}/images/user/user-02.png`,
     title: "New message received",
     subTitle: "Devid sent you new message",
   },
   {
-    image: `${prefix}/user/user-26.png`,
+    image: `${prefix}/images/user/user-26.png`,
     title: "New Payment received",
     subTitle: "Check your earnings",
   },
   {
-    image: `${prefix}/user/user-28.png`,
+    image: `${prefix}/images/user/user-28.png`,
     title: "Jolly completed tasks",
     subTitle: "Assign her newtasks",
   },
   {
-    image: `${prefix}/user/user-27.png`,
+    image: `${prefix}/images/user/user-27.png`,
     title: "Roman Joined the Team!",
     subTitle: "Congratulate him",
   },

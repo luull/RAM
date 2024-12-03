@@ -61,7 +61,7 @@ const Header = (props: {
             <Image
               width={32}
               height={32}
-              src={`${prefix}/logo/logo-icon.svg`}
+              src={`${prefix}/images/logo/logo-icon.svg`}
               alt="Logo"
             />
           </Link>
