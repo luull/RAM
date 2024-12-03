@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   description: "Choose your seat for the movie.",
 };
 
+export async function generateStaticParams() {
+  const movies = await fetchMovies();
+
+  return movies.map((movie) => ({
+    id: movie.id.toString(),
+  }));
+}
+
 const SeatSelectionPageComponent: React.FC<{ params: { id: string } }> = async ({ params }) => {
   const { id } = params;
 
