@@ -1,3 +1,3 @@
-const prefix = 'images';
+const prefix = '/images';
 
 export { prefix };
