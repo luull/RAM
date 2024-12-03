@@ -1,4 +1,4 @@
-"use client"; // Ensure this is client-side
+"use client"; 
 
 import { ArrowLongLeftIcon, ArrowLongRightIcon, WalletIcon } from "@heroicons/react/16/solid";
 import { CreditCardIcon } from "@heroicons/react/24/outline";
