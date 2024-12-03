@@ -1,26 +1,33 @@
-
-import { fetchMovies } from '@/lib/service';  
-import DefaultLayout from "@/components/Layouts/DefaultLaout"; 
-import SeatSelectionPage from "@/components/Movies/SeatSelectionPage"; 
-import { Metadata } from 'next';
-
+import { Metadata } from "next";
+import DefaultLayout from "@/components/Layouts/DefaultLaout";
+import React from "react";
+import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
+import SeatSelectionPage from "@/components/Movies/SeatSelectionPage";
+import { fetchMovies } from "@/lib/service";
 
 export const metadata: Metadata = {
   title: "CINEMAGO | Seat Selection",
-  description: "Seat Selection",
+  description: "Choose your seat for the movie.",
 };
-const SeatSelection = async ({ params }: { params: { id: string } }) => {
+
+const SeatSelectionPageComponent: React.FC<{ params: { id: string } }> = async ({ params }) => {
   const { id } = params;
 
-  const movies = await fetchMovies(); 
+  const movies = await fetchMovies();
   const movie = movies.find((movie) => movie.id.toString() === id.toString());
 
   if (!movie) {
-    return <p>Film tidak ditemukan.</p>;
+    return (
+      <DefaultLayout>
+        <Breadcrumb pageName="Seat Selection" />
+        <p className="text-center text-lg mt-8">Film tidak ditemukan.</p>
+      </DefaultLayout>
+    );
   }
 
   return (
     <DefaultLayout>
+      <Breadcrumb pageName={`Seat Selection - ${movie.title}`} />
       <div className="mx-auto max-w-7xl">
         <SeatSelectionPage movie={movie.title} />
       </div>
@@ -28,12 +35,4 @@ const SeatSelection = async ({ params }: { params: { id: string } }) => {
   );
 };
 
-export async function generateStaticParams() {
-  const movies = await fetchMovies();
-
-  return movies.map((movie) => ({
-    id: movie.id.toString(),  
-  }));
-}
-
-export default SeatSelection;
+export default SeatSelectionPageComponent;
