@@ -1,8 +1,7 @@
-
+import { fetchMovies } from '@/lib/service';  
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import DefaultLayout from "@/components/Layouts/DefaultLaout"; // Corrected typo: DefaultLaout -> DefaultLayout
 import MovieCard from "@/components/Movies/MoviesCard";
-import { fetchMovies } from "@/types/movie";
 
 // Define Movie interface for better type safety
 export interface Movie {
@@ -14,8 +13,8 @@ export interface Movie {
 }
 
 // Async function for page component
-const MoviesPage = () => {
-  const movies: Movie[] =  fetchMovies;  // Explicitly type the fetched movies array
+const MoviesPage = async () => {
+  const movies: Movie[] = await fetchMovies();  // Explicitly type the fetched movies array
 
   return (
     <DefaultLayout>
