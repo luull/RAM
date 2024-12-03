@@ -1,12 +1,30 @@
 "use client"; // Ensure this is client-side
 
+import { ArrowLongLeftIcon, ArrowLongRightIcon, WalletIcon } from "@heroicons/react/16/solid";
+import { CreditCardIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
-
+import PaymentMethodModal from "./PaymentModal";
+import { useRouter } from 'next/navigation';
 interface SeatSelectionPageProps {
   movie?: string;
 }
+export interface TransactionDetailsTypes {
+  movie: string;
+  totalPrice: number;
+  selectedSeats: string[];
+  paymentMethod: string | null;
+}
 
 const SeatSelectionPage = ({ movie }: SeatSelectionPageProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [transactionDetails, setTransactionDetails] = useState<TransactionDetailsTypes>({
+    movie: movie || "",
+    totalPrice: 0,
+    selectedSeats: [],
+    paymentMethod: null,
+  });
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
   const totalRows = 10; // Total rows per seat section
   const totalSeatsPerRow = 10; // Total seats per row
   const seatPrice = 40000; // Harga tetap untuk setiap kursi
@@ -18,24 +36,34 @@ const SeatSelectionPage = ({ movie }: SeatSelectionPageProps) => {
 
   const handleSeatClick = (row: number, col: number) => {
     const newSeats = [...seats];
-    const seatLabel = `${String.fromCharCode(97 + row)}${col + 1}`; // Column as number, Row as letter
-
+    const seatLabel = `${String.fromCharCode(97 + row).toUpperCase()}${col + 1}`;
+  
     if (seats[row][col] === 0) {
+      // Seat selected
       newSeats[row][col] = 1;
       setSelectedSeats((prev) => [...prev, seatLabel]);
-      setTotalPrice((prev) => prev + seatPrice); // Tambah harga kursi ke total
+      setTransactionDetails((prev) => ({
+        ...prev,
+        selectedSeats: [...prev.selectedSeats, seatLabel],
+        totalPrice: prev.totalPrice + seatPrice, // Update totalPrice
+      }));
+      setTotalPrice((prev) => prev + seatPrice); // Sync totalPrice state
     } else if (seats[row][col] === 1) {
+      // Seat deselected
       newSeats[row][col] = 0;
       setSelectedSeats((prev) => prev.filter((seat) => seat !== seatLabel));
-      setTotalPrice((prev) => prev - seatPrice); // Kurangi harga kursi dari total
+      setTransactionDetails((prev) => ({
+        ...prev,
+        selectedSeats: prev.selectedSeats.filter((seat) => seat !== seatLabel),
+        totalPrice: prev.totalPrice - seatPrice, // Update totalPrice
+      }));
+      setTotalPrice((prev) => prev - seatPrice); // Sync totalPrice state
     }
-
+  
     setSeats(newSeats);
   };
-
-  const handleSubmit = () => {
-    alert(`Selected Seats for Movie ${movie}: ${selectedSeats.join(", ")}\nTotal Price: Rp ${totalPrice.toLocaleString("id-ID")}`);
-  };
+  
+  
 
   return (
     <div className="bg-gray-100 dark:bg-[#040d19] min-h-screen">
@@ -108,16 +136,26 @@ const SeatSelectionPage = ({ movie }: SeatSelectionPageProps) => {
                   </>
                 )}
                 <button
-                  onClick={handleSubmit}
-                  className="bg-secondary font-bold text-white py-2 px-6 rounded-md hover:bg-opacity-90"
+                disabled={selectedSeats.length < 1}
+                onClick={openModal}
+                  className="bg-secondary font-bold flex flex-row justify-between disabled:bg-gray-4 text-white py-2 px-6 rounded-md hover:bg-opacity-90"
                 >
+                  <span className="flex flex-row space-x-3">
+                    <CreditCardIcon className="w-5 mr-4"/>
                   Lanjutkan ke Pembayaran
+                  </span>
+                  <ArrowLongRightIcon className="w-5"/>
                 </button>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <PaymentMethodModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        transactionDetails={transactionDetails}
+      />
     </div>
   );
 };
