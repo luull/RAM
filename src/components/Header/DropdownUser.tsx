@@ -2,6 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ClickOutside from "@/components/ClickOutside";
+import { prefix } from "@/utils/prefix";
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -17,7 +18,7 @@ const DropdownUser = () => {
           <Image
             width={112}
             height={112}
-            src="images/user/user31.png"
+            src={`${prefix}/user/user31.png`}
             style={{
               width: "auto",
               height: "auto",
@@ -58,7 +59,7 @@ const DropdownUser = () => {
               <Image
                 width={112}
                 height={112}
-                src="images/user/user31.png"
+                src={`${prefix}/user/user31.png`}
                 style={{
                   width: "auto",
                   height: "auto",

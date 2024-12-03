@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { prefix } from "@/utils/prefix";
 
 const SettingBoxes = () => {
   return (
@@ -243,7 +244,7 @@ const SettingBoxes = () => {
                   <div className="h-14 w-14 rounded-full">
                     <>
                       <Image
-                        src="images/user/user-03.png"
+                        src={`${prefix}/user/user-03.png`}
                         width={55}
                         height={55}
                         alt="User"

@@ -4,6 +4,7 @@ import DropdownNotification from "./DropdownNotification";
 import DropdownUser from "./DropdownUser";
 import Image from "next/image";
 import SearchForm from "@/components/Header/SearchForm";
+import { prefix } from "@/utils/prefix";
 
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
@@ -60,7 +61,7 @@ const Header = (props: {
             <Image
               width={32}
               height={32}
-              src={"images/logo/logo-icon.svg"}
+              src={`${prefix}/logo/logo-icon.svg`}
               alt="Logo"
             />
           </Link>

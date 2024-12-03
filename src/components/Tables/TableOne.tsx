@@ -1,9 +1,10 @@
 import { BRAND } from "@/types/brand";
+import { prefix } from "@/utils/prefix";
 import Image from "next/image";
 
 const brandData: BRAND[] = [
   {
-    logo: "images/brand/brand-01.svg",
+    logo: `${prefix}/brand/brand-01.svg`,
     name: "Google",
     visitors: 3.5,
     revenues: "5,768",
@@ -11,7 +12,7 @@ const brandData: BRAND[] = [
     conversion: 4.8,
   },
   {
-    logo: "images/brand/brand-02.svg",
+    logo: `${prefix}/brand/brand-02.svg`,
     name: "X.com",
     visitors: 2.2,
     revenues: "4,635",
@@ -19,7 +20,7 @@ const brandData: BRAND[] = [
     conversion: 4.3,
   },
   {
-    logo: "images/brand/brand-03.svg",
+    logo: `${prefix}/brand/brand-03.svg`,
     name: "Github",
     visitors: 2.1,
     revenues: "4,290",
@@ -27,7 +28,7 @@ const brandData: BRAND[] = [
     conversion: 3.7,
   },
   {
-    logo: "images/brand/brand-04.svg",
+    logo: `${prefix}/brand/brand-04.svg`,
     name: "Vimeo",
     visitors: 1.5,
     revenues: "3,580",
@@ -35,7 +36,7 @@ const brandData: BRAND[] = [
     conversion: 2.5,
   },
   {
-    logo: "images/brand/brand-05.svg",
+    logo: `${prefix}/brand/brand-05.svg`,
     name: "Facebook",
     visitors: 1.2,
     revenues: "2,740",

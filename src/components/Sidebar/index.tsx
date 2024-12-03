@@ -7,6 +7,7 @@ import Image from "next/image";
 import SidebarItem from "@/components/Sidebar/SidebarItem";
 import ClickOutside from "@/components/ClickOutside";
 import useLocalStorage from "@/hooks/useLocalStorage";
+import { prefix } from "@/utils/prefix";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -110,7 +111,7 @@ const menuGroups = [
             />
           </svg>
         ),
-        label: "Sign Out",
+        label: "Logout",
         route: "/auth/signin",
         // children: [
         //   { label: "Sign In", route: "/auth/signin" },
@@ -123,7 +124,7 @@ const menuGroups = [
 const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   const pathname = usePathname();
 
-  const [pageName, setPageName] = useLocalStorage("selectedMenu", "dashboard");
+  const [pageName, setPageName] = useLocalStorage("selectedMenu", "beranda");
 
   return (
     <ClickOutside onClick={() => setSidebarOpen(false)}>
@@ -140,7 +141,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
             <Image
               width={176}
               height={32}
-              src={"images/logo/cinemago-light-hor.png"}
+              src={`${prefix}/logo/cinemago-light-hor.png`}
               alt="Logo"
               priority
               className="dark:hidden"
@@ -149,7 +150,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
             <Image
               width={176}
               height={32}
-              src={"images/logo/cinemago-dark-hor.png"}
+              src={`${prefix}/logo/cinemago-dark-hor.png`}
               alt="Logo"
               priority
               className="hidden dark:block"
