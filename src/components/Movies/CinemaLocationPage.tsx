@@ -23,10 +23,16 @@ const CinemaLocationPage = ({ movie }: CinemaLocationProps) => {
     date: null,
     time: null,
   });
+
+  useEffect(() => {
+    const defaultFavorites = ["AEON Mall Deltamas IMAX", "Grand Indonesia CGV"];
+    setFavorites(defaultFavorites);
+  }, []);
+
   const handleScheduleSelect = useCallback((selected: { date: string | null; time: string | null }) => {
     setSchedule(selected);
   }, []);
-  
+
   const cinemas = [
     "AEON Mall Deltamas IMAX",
     "AEON Mall Deltamas Premiere",
@@ -70,14 +76,12 @@ const CinemaLocationPage = ({ movie }: CinemaLocationProps) => {
         date: schedule.date,
         time: schedule.time,
       }).toString();
-  
+
       router.push(`/seat-selection/${movie.id}?${queryParams}`);
     } else {
       alert("Pastikan semua data sudah dipilih!");
     }
   };
-
-  
 
   return (
     <div className="bg-gray-100 dark:bg-[#040d19] p-6">
@@ -208,6 +212,7 @@ const CinemaLocationPage = ({ movie }: CinemaLocationProps) => {
         </>
       )}
     </div>
+
   );
 };
 

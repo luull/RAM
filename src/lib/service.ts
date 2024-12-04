@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export const fetchMovies = async (): Promise<Movie[]> => {  // Ensure the return type is correctly typed
   try {
-    const response = await axios.get('https://api.themoviedb.org/3/movie/popular', {
+    const response = await axios.get('https://api.themoviedb.org/3/movie/now_playing', {
       params: {
         api_key: '6dcaf0667fe77633ed4db188ddc50fa2', 
         language: 'en-US',
