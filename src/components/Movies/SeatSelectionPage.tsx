@@ -1,27 +1,39 @@
 "use client"; 
 
-import { ArrowLongLeftIcon, ArrowLongRightIcon, WalletIcon } from "@heroicons/react/16/solid";
+import { ArrowLongLeftIcon, ArrowLongRightIcon, CheckCircleIcon, WalletIcon } from "@heroicons/react/16/solid";
 import { CreditCardIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import PaymentMethodModal from "./PaymentModal";
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 interface SeatSelectionPageProps {
   movie?: string;
 }
 export interface TransactionDetailsTypes {
-  movie: string;
+  movie: any;
   totalPrice: number;
   selectedSeats: string[];
   paymentMethod: string | null;
+  location: string | null;
+  date: string | null;
+  time: string | null;
 }
 
 const SeatSelectionPage = ({ movie }: SeatSelectionPageProps) => {
+  const searchParams = useSearchParams();
+
+  const location = searchParams.get('location');
+  const date = searchParams.get('date');
+  const time = searchParams.get('time');
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [transactionDetails, setTransactionDetails] = useState<TransactionDetailsTypes>({
     movie: movie || "",
     totalPrice: 0,
     selectedSeats: [],
     paymentMethod: null,
+    location:location,
+    date:date,
+    time:time
   });
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -101,8 +113,8 @@ const SeatSelectionPage = ({ movie }: SeatSelectionPageProps) => {
 
             <hr className="my-5" />
             <div className="flex flex-col md:flex-row">
-              <div className="w-full md-w-1/3">
-                <div className="flex flex-col space-y-2 mb-4">
+            <div className="w-full md:1/3">
+            <div className="flex flex-col space-y-2 mb-4">
                   <div className="flex items-center space-x-2">
                     <div className="w-5 h-5 bg-green-500 rounded-full"></div>
                     <span className="text-sm">Kursi Tersedia</span>
@@ -116,7 +128,33 @@ const SeatSelectionPage = ({ movie }: SeatSelectionPageProps) => {
                     <span className="text-sm">Kursi Terpesan</span>
                   </div>
                 </div>
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2 flex items-center">
+              <CheckCircleIcon className="w-6 h-6 text-green-500 mr-2" />
+              Ringkasan Pilihan Anda
+            </h3>
+            <div className="flex items-center space-x-4">
+              <div className="flex-grow">
+                <p className="text-gray-800 dark:text-white">
+                  <strong>Film:</strong> {movie}
+                </p>
+                <p className="text-gray-800 dark:text-white">
+                  <strong>Bioskop:</strong> {location}
+                </p>
+                <p className="text-gray-800 dark:text-white">
+                  <strong>Jadwal:</strong>{" "}
+                  {date && time
+                    ? `${new Date(date).toLocaleDateString("id-ID", {
+                        weekday: "long",
+                        day: "2-digit",
+                        month: "long",
+                        year: "numeric",
+                      })}, - ${time}`
+                    : "Belum dipilih"}
+                </p>
               </div>
+           
+            </div>
+            </div>        
               <div className="w-full md:w-2/3 flex justify-end flex-col">
                 <div className={`${selectedSeats.length > 0 ? "mb-1" : "mb-4"} flex flex-row justify-between`}>
                   <span className="text-lg font-bold text-gray-800 dark:text-white">Total Kursi: </span>
@@ -151,6 +189,7 @@ const SeatSelectionPage = ({ movie }: SeatSelectionPageProps) => {
           </div>
         </div>
       </div>
+
       <PaymentMethodModal
         isOpen={isModalOpen}
         onClose={closeModal}

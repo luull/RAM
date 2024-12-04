@@ -3,11 +3,17 @@
     import { useSearchParams } from 'next/navigation';
     import { useState, useEffect } from 'react';
     import { paymentMethodsSummary } from '@/types/payment'; 
+    import { QRCodeCanvas } from "qrcode.react";
+
+import Receipt from './Receipt';
 
     const TransactionSummary = () => {
     const searchParams = useSearchParams();
 
     const title = searchParams.get('title');
+    const location = searchParams.get('location');
+    const date = searchParams.get('date');
+    const time = searchParams.get('time');
     const totalPrice = searchParams.get('totalPrice');
     const seatNumber = searchParams.get('seatNumber');
     const paymentMethod = searchParams.get('paymentMethod');
@@ -79,30 +85,23 @@
     <div className="flex flex-col md:flex-row space-x-0 space-y-5 md:space-y-0 md:space-x-5">
 
             {/* Kartu Ringkasan Transaksi */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-full">
-            <h2 className="text-xl font-bold text-center text-gray-800 dark:text-white mb-4">
-                Ringkasan Transaksi
-            </h2>
-            <div className="space-y-4">
-                    <div className="flex flex-row justify-between">
-                        <span className="font-normal">Film:</span>
-                        <p className="font-bold">{title}</p>
-                    </div>
-                    <div className="flex flex-row justify-between">
-                        <span className="font-normal">Nomor Kursi:</span>
-                        <p className="font-bold">{seatNumber}</p>
-                    </div>
-                    <div className="flex flex-row justify-between">
-                        <span className="font-normal">Total Harga:</span>
-                        <p className="font-bold">Rp {Number(totalPrice)?.toLocaleString("id-ID")}</p>
-                    </div>
-                    
-                    </div>
+            <Receipt
+                title={title}
+                location={location}
+                date={date}
+                time={time}
+                seatNumber={seatNumber}
+                totalPrice={totalPrice}
+                barcodeValue={123123123123} 
+                />
 
-            </div>
             {/* Kartu Countdown */}
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-full">
-            <h2 className="text-xl font-bold mt-5 text-center text-gray-800 dark:text-white mb-4">
+            <p className="text-center font-bold text-sm text-gray-600 dark:text-gray-400 mt-2">
+                SCAN QR UNTUK PEMBAYARAN
+            </p>
+            <QRCodeCanvas className='text-center mt-5 mx-auto' value="https://reactjs.org/" />,
+            <h2 className="text-xl font-bold text-center text-gray-800 dark:text-white mb-4">
                 Waktu Pembayaran
             </h2>
             <div className="flex justify-center items-center space-x-4">
@@ -110,6 +109,7 @@
                 {minutes < 10 ? `0${minutes}` : minutes}:{seconds < 10 ? `0${seconds}` : seconds}
                 </div>
             </div>
+
             <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-2">
                 Segera lakukan pembayaran sebelum waktu habis!
             </p>

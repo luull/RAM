@@ -18,7 +18,6 @@ const PaymentMethodModal = ({
 }) => {
   const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
   const router = useRouter();
-
   if (!isOpen) return null;
   const generateVirtualAccount = (bankCode: string = "123") => {
     const uniquePart = Math.random().toString().slice(2, 12); 
@@ -38,13 +37,16 @@ const PaymentMethodModal = ({
       const virtualAccount = generateVirtualAccount(bankCode);
   
       const queryString = new URLSearchParams({
-        title: transactionDetails.movie,
-        totalPrice: transactionDetails.totalPrice.toString(),
-        seatNumber: transactionDetails.selectedSeats.join(", "),
-        paymentMethod: selectedMethod,
-        virtualCode: virtualAccount, // Menambahkan virtual account
+        location: transactionDetails.location ?? "",
+        date: transactionDetails.date ?? "", 
+        time: transactionDetails.time ?? "",
+        title: transactionDetails.movie ?? "",
+        totalPrice: transactionDetails.totalPrice.toString(), 
+        seatNumber: transactionDetails.selectedSeats.join(", "), 
+        paymentMethod: selectedMethod ?? "", 
+        virtualCode: virtualAccount ?? "",
       }).toString();
-  
+        
       router.push(`/transaction-summary?${queryString}`);
       onClose();
     } else {
