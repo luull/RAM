@@ -154,10 +154,11 @@ const SeatSelectionPage = ({ movie }: SeatSelectionPageProps) => {
               </div>
            
             </div>
-            </div>        
+            </div>   
+            <hr className="md:hidden block my-3 md:my-0" />     
               <div className="w-full md:w-2/3 flex justify-end flex-col">
                 <div className={`${selectedSeats.length > 0 ? "mb-1" : "mb-4"} flex flex-row justify-between`}>
-                  <span className="text-lg font-bold text-gray-800 dark:text-white">Total Kursi: </span>
+                  <span className="text-md md:text-lg font-bold text-gray-800 dark:text-white">Total Kursi: </span>
                   <span className="text-xl text-secondary font-bold">{selectedSeats.length}</span>
                 </div>
                 {selectedSeats.length > 0 && (
@@ -167,8 +168,8 @@ const SeatSelectionPage = ({ movie }: SeatSelectionPageProps) => {
                     </span>
                     <hr className="my-3" />
                     <div className="flex flex-row justify-between mb-4">
-                      <p className="text-gray-800 dark:text-white font-bold text-lg mt-2">Total Harga:</p>
-                      <span className="text-secondary text-xl font-extrabold mt-2">Rp {totalPrice.toLocaleString("id-ID")}</span>
+                      <p className="text-gray-800 dark:text-white font-bold text-md md:text-lg mt-2">Total Harga:</p>
+                      <span className="text-primary text-xl font-extrabold mt-2">Rp {totalPrice.toLocaleString("id-ID")}</span>
                     </div>
                     <hr className="mb-4" />
                   </>

@@ -173,44 +173,50 @@ const CinemaLocationPage = ({ movie }: CinemaLocationProps) => {
       </div>
 
       {selectedCinema && (
-        <>
-          <SchedulePage onSelectSchedule={handleScheduleSelect} movie={movie} />
-          <div className="sticky bottom-0 mt-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
-            <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2 flex items-center">
-              <CheckCircleIcon className="w-6 h-6 text-green-500 mr-2" />
-              Ringkasan Pilihan Anda
-            </h3>
-            <div className="flex items-center space-x-4">
-              <div className="flex-grow">
-                <p className="text-gray-800 dark:text-white">
-                  <strong>Film:</strong> {movie?.title}
-                </p>
-                <p className="text-gray-800 dark:text-white">
-                  <strong>Bioskop:</strong> {selectedCinema}
-                </p>
-                <p className="text-gray-800 dark:text-white">
-                  <strong>Jadwal:</strong>{" "}
-                  {schedule?.date && schedule?.time
-                    ? `${new Date(schedule.date).toLocaleDateString("id-ID", {
-                        weekday: "long",
-                        day: "2-digit",
-                        month: "long",
-                        year: "numeric",
-                      })}, - ${schedule.time}`
-                    : "Belum dipilih"}
-                </p>
-              </div>
-              <button
-                onClick={handleRedirect}
-                className="bg-secondary text-white px-6 py-2 rounded-md hover:bg-opacity-90 flex items-center space-x-2"
-              >
-                <ArrowLongRightIcon className="w-5" />
-                <span>Lanjut pilih kursi</span>
-              </button>
-            </div>
-          </div>
-        </>
-      )}
+  <>
+    <SchedulePage onSelectSchedule={handleScheduleSelect} movie={movie} />
+    <div className="sticky bottom-0 mt-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+      <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2 flex items-center">
+        <CheckCircleIcon className="w-6 h-6 text-green-500 mr-2" />
+        Ringkasan Pilihan Anda
+      </h3>
+      <div className="flex flex-col md:flex-row items-center space-x-0 space-y-5 md:space-y-0 md:space-x-4">
+        <div className="flex-grow">
+          <p className="text-gray-800 dark:text-white">
+            <strong>Film:</strong> {movie?.title}
+          </p>
+          <p className="text-gray-800 dark:text-white">
+            <strong>Bioskop:</strong> {selectedCinema}
+          </p>
+          <p className="text-gray-800 dark:text-white">
+            <strong>Jadwal:</strong>{" "}
+            {schedule?.date && schedule?.time
+              ? `${new Date(schedule.date).toLocaleDateString("id-ID", {
+                  weekday: "long",
+                  day: "2-digit",
+                  month: "long",
+                  year: "numeric",
+                })}, - ${schedule.time}`
+              : "Belum dipilih"}
+          </p>
+        </div>
+        <button
+          onClick={handleRedirect}
+          disabled={!movie || !selectedCinema || !schedule?.date || !schedule?.time}
+          className={`w-full md:w-60 text-white px-6 py-2 rounded-md flex items-center space-x-2 ${
+            !movie || !selectedCinema || !schedule?.date || !schedule?.time
+              ? "bg-slate-500 cursor-not-allowed"
+              : "bg-secondary hover:bg-opacity-90"
+          }`}
+        >
+          <ArrowLongRightIcon className="w-5" />
+          <span>Lanjut pilih kursi</span>
+        </button>
+      </div>
+    </div>
+  </>
+)}
+
     </div>
 
   );

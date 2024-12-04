@@ -83,18 +83,6 @@ import Receipt from './Receipt';
             </div>
 
     <div className="flex flex-col md:flex-row space-x-0 space-y-5 md:space-y-0 md:space-x-5">
-
-            {/* Kartu Ringkasan Transaksi */}
-            <Receipt
-                title={title}
-                location={location}
-                date={date}
-                time={time}
-                seatNumber={seatNumber}
-                totalPrice={totalPrice}
-                barcodeValue={123123123123} 
-                />
-
             {/* Kartu Countdown */}
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-full">
             <p className="text-center font-bold text-sm text-gray-600 dark:text-gray-400 mt-2">
@@ -114,6 +102,18 @@ import Receipt from './Receipt';
                 Segera lakukan pembayaran sebelum waktu habis!
             </p>
             </div>
+            {/* Kartu Ringkasan Transaksi */}
+            <Receipt
+                title={title}
+                location={location}
+                date={date}
+                time={time}
+                seatNumber={seatNumber}
+                totalPrice={totalPrice}
+                barcodeValue={123123123123} 
+                />
+
+
     </div>
 
         </div>
