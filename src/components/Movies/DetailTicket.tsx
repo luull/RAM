@@ -3,8 +3,24 @@ import Image from "next/image";
 import {QRCodeCanvas} from "qrcode.react";
 import { useSearchParams } from "next/navigation";
 import { prefix } from "@/utils/prefix";
+import { useEffect, useState } from "react";
 
 const DetailTicket = ({ movies }: any) => {
+  const [randomString, setRandomString] = useState('');
+
+  const generateRandomString = (length: number): string => {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return result;
+  };
+
+  useEffect(() => {
+    const generatedString = generateRandomString(7);
+    setRandomString(generatedString);
+  }, []); 
   const searchParams = useSearchParams();
   const title = searchParams.get("title");
   const location = searchParams.get("location");
@@ -71,11 +87,11 @@ const DetailTicket = ({ movies }: any) => {
         {/* QR Code and Booking Info */}
         <div className="bg-white py-6 text-center">
           <p className="text-sm text-gray-600">ID Booking</p>
-          <p className="text-md font-bold text-black">WFLKWXP</p>
+          <p className="text-md font-bold text-black">{randomString}</p>
 
           <div className="mt-4 flex flex-col items-center justify-center">
             <QRCodeCanvas
-              value={`WFLKWXP`}
+              value={randomString}
               size={128}
               bgColor="#ffffff"
               fgColor="#000000"
