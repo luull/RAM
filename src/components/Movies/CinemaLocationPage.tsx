@@ -25,7 +25,7 @@ const CinemaLocationPage = ({ movie }: CinemaLocationProps) => {
   });
 
   useEffect(() => {
-    const defaultFavorites = ["AEON Mall Deltamas IMAX", "Grand Indonesia CGV"];
+    const defaultFavorites = ["Summarecon Mall Bekasi XXI","Botani Square CGV",  "Plaza Senayan XXI",  "Grand Indonesia CGV", "AEON Mall Deltamas IMAX", "Grand Indonesia CGV"];
     setFavorites(defaultFavorites);
   }, []);
 
@@ -171,10 +171,12 @@ const CinemaLocationPage = ({ movie }: CinemaLocationProps) => {
           </ul>
         </div>
       </div>
-
       {selectedCinema && (
+
+      <SchedulePage onSelectSchedule={handleScheduleSelect} movie={movie} />
+      )}
+      {movie && selectedCinema && schedule?.date && schedule?.time && (
   <>
-    <SchedulePage onSelectSchedule={handleScheduleSelect} movie={movie} />
     <div className="sticky bottom-0 mt-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
       <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2 flex items-center">
         <CheckCircleIcon className="w-6 h-6 text-green-500 mr-2" />
