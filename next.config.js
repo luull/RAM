@@ -4,7 +4,7 @@ const nextConfig = {
   assetPrefix: '/RAM', // Ensures assets are prefixed correctly
   trailingSlash: true, // Ensures paths end with a slash
   env: {
-    NEXT_PUBLIC_BASE_PATH: '/cinemago', // Makes it accessible in the app
+    NEXT_PUBLIC_BASE_PATH: '/RAM', // Makes it accessible in the app
   },
   images: {
     loader: 'default',
