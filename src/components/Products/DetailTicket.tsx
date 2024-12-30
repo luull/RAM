@@ -97,7 +97,7 @@ const DetailTicket = ({ movies }: any) => {
               fgColor="#000000"
             />
                     <Image
-              src={`${prefix}/images/logo/cinemago-light-hor.png`}
+              src={`${prefix}/images/logo/RAM-light-hor.png`}
               alt={movie?.title || "Poster"}
               width={120}
               height={140}

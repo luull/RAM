@@ -5,11 +5,15 @@ import DropdownUser from "./DropdownUser";
 import Image from "next/image";
 import SearchForm from "@/components/Header/SearchForm";
 import { prefix } from "@/utils/prefix";
+import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import useLocalStorage from "@/hooks/useLocalStorage";
+import { ProductCart } from "../Products/DetailProduct";
 
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
 }) => {
+  const [cart] = useLocalStorage<ProductCart[]>("cart", []);
   return (
     <header className="sticky top-0 z-999 flex w-full border-b border-stroke bg-white dark:border-stroke-dark dark:bg-gray-dark">
       <div className="flex flex-grow items-center justify-between px-4 py-5 shadow-2 md:px-5 2xl:px-10">
@@ -61,7 +65,7 @@ const Header = (props: {
             <Image
               width={32}
               height={32}
-              src={`${prefix}/images/logo/logo-icon.svg`}
+              src={`${prefix}/images/logo/RAM-light.png`}
               alt="Logo"
             />
           </Link>
@@ -87,7 +91,23 @@ const Header = (props: {
             {/* <!-- Dark Mode Toggle --> */}
 
             {/* <!-- Notification Menu Area --> */}
-            <DropdownNotification />
+            {/* <DropdownNotification /> */}
+            <li>
+            <Link
+      href="/cart"
+      className="relative flex h-12 w-12 items-center justify-center rounded-full border border-stroke bg-gray-2 text-dark hover:text-primary dark:border-dark-4 dark:bg-dark-3 dark:text-white dark:hover:text-white"
+    >
+      <span className="relative">
+        <ShoppingCartIcon width={20} height={20} />
+        {/* Badge for the total items */}
+   
+          <span className="absolute bottom-5 flex justify-center items-center w-5 h-5 ml-5 text-xs font-semibold text-white bg-red rounded-full">
+            {cart?.length ?? 0}
+          </span>
+    
+      </span>
+    </Link>
+        </li>
             {/* <!-- Notification Menu Area --> */}
           </ul>
 

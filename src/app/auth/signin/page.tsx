@@ -8,7 +8,7 @@ import Signin from "@/components/Auth/Signin";
 import { prefix } from "@/utils/prefix";
 
 export const metadata: Metadata = {
-  title: "CINEMAGO | Sign In",
+  title: "RAM | Sign In",
   description: "Sign In",
 };
 
@@ -32,14 +32,14 @@ const SignIn: React.FC = () => {
               <Link className="mb-10 justify-center flex" href="/">
                 <Image
                   className="hidden dark:block"
-                  src={`${prefix}/images/logo/CINEMAGO-dark.png`}
+                  src={`${prefix}/images/logo/RAM-dark.png`}
                   alt="Logo"
                   width={276}
                   height={32}
                 />
                 <Image
                   className="dark:hidden"
-                  src={`${prefix}/images/logo/CINEMAGO-light.png`}
+                  src={`${prefix}/images/logo/RAM-light.png`}
                   alt="Logo"
                   width={276}
                   height={32}

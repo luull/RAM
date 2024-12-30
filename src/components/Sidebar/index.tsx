@@ -61,8 +61,8 @@ const menuGroups = [
             />
           </svg>
         ),
-        label: "Daftar Film",
-        route: "/movies",
+        label: "Daftar Produk",
+        route: "/products",
       },
       {
         icon: (
@@ -139,22 +139,22 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5 xl:py-10">
           <Link href="/">
             <Image
-              width={176}
+              width={130}
               height={32}
-              src={`${prefix}/images/logo/cinemago-light-hor.png`}
+              src={`${prefix}/images/logo/RAM-light-hor.png`}
               alt="Logo"
               priority
               className="dark:hidden"
-              style={{ width: "auto", height: "auto" }}
+              style={{ width: "210px", height: "auto" }}
             />
             <Image
-              width={176}
+              width={130}
               height={32}
-              src={`${prefix}/images/logo/cinemago-dark-hor.png`}
+              src={`${prefix}/images/logo/RAM-dark-hor.png`}
               alt="Logo"
               priority
               className="hidden dark:block"
-              style={{ width: "auto", height: "auto" }}
+              style={{ width: "210px", height: "auto" }}
             />
           </Link>
 

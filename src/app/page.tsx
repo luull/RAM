@@ -6,7 +6,7 @@ import SignIn from "./auth/signin/page";
 
 export const metadata: Metadata = {
   title:
-    "CINEMA GO | Sign in",
+    "RAM | Sign in",
   description: "Sign in",
 };
 

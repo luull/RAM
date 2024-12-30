@@ -4,7 +4,7 @@ import DefaultLayout from "@/components/Layouts/DefaultLaout";
 import ProfileBox from "@/components/ProfileBox";
 
 export const metadata: Metadata = {
-  title: "CINEMAGO | Profile",
+  title: "RAM | Profile",
   description: "Profile",
 };
 

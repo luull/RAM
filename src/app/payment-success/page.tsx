@@ -3,11 +3,11 @@ import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
 import React from "react";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import TransactionSummary from "@/components/Movies/TransactionSummary";
-import SuccessPayment from "@/components/Movies/SuccessPaymentPage";
+import TransactionSummary from "@/components/Products/TransactionSummary";
+import SuccessPayment from "@/components/Products/SuccessPaymentPage";
 
 export const metadata: Metadata = {
-  title: "CINEMAGO | Payment Success",
+  title: "RAM | Payment Success",
   description: "Payment Success",
 };
 

@@ -2,11 +2,11 @@ import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
 import React from "react";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import SeatSelectionPage from "@/components/Movies/SeatSelectionPage";
+import SeatSelectionPage from "@/components/Products/SeatSelectionPage";
 import { fetchMovies } from "@/lib/service";
 
 export const metadata: Metadata = {
-  title: "CINEMAGO | Seat Selection",
+  title: "RAM | Seat Selection",
   description: "Choose your seat for the movie.",
 };
 

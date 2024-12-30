@@ -3,10 +3,10 @@ import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
 import React from "react";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import TransactionSummary from "@/components/Movies/TransactionSummary";
+import TransactionSummary from "@/components/Products/TransactionSummary";
 
 export const metadata: Metadata = {
-  title: "CINEMAGO | Transaction Summary",
+  title: "RAM | Transaction Summary",
   description: "Transaction Summary",
 };
 
