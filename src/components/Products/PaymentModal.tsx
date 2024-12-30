@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { prefix } from "@/utils/prefix";
-import { TransactionDetailsTypes } from "./SeatSelectionPage";
 import { paymentMethods } from "@/types/payment";
 
 const PaymentMethodModal = ({
@@ -14,7 +13,7 @@ const PaymentMethodModal = ({
 }: {
   isOpen: boolean;
   onClose: () => void;
-  transactionDetails: TransactionDetailsTypes;
+  transactionDetails: any;
 }) => {
   const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
   const router = useRouter();
