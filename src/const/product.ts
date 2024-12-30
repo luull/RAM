@@ -1,7 +1,9 @@
+import { prefix } from "@/utils/prefix";
+
 export const PRODUCTS = [
     {
       id: 'oix1no6a',
-      image: '/images/product/Oregano.jpg',
+      image: `${prefix}/images/product/Oregano.jpg`,
       name: 'oregano',
       price: 5000,
       stock: 20,
@@ -10,7 +12,7 @@ export const PRODUCTS = [
     },
     {
       id: '5qrrtm01',
-      image: '/images/product/Rosemary.jpg',
+      image: `${prefix}/images/product/Rosemary.jpg`,
       name: 'rosemary',
       price: 5500,
       stock: 15,
@@ -19,7 +21,7 @@ export const PRODUCTS = [
     },
     {
       id: 'nuoo01s6',
-      image: '/images/product/Parsley.jpg',
+      image: `${prefix}/images/product/Parsley.jpg`,
       name: 'parsley',
       price: 9000,
       stock: 30,
@@ -28,7 +30,7 @@ export const PRODUCTS = [
     },
     {
       id: 'w0hnaz7g',
-      image: '/images/product/Thyme.jpg',
+      image: `${prefix}/images/product/Thyme.jpg`,
       name: 'thyme',
       price: 5750,
       stock: 25,
@@ -36,7 +38,7 @@ export const PRODUCTS = [
     },
     {
       id: 'oozlu8lk',
-      image: '/images/product/Basil.jpg',
+      image: `${prefix}/images/product/Basil.jpg`,
       name: 'basil',
       price: 5250,
       stock: 20,
@@ -44,7 +46,7 @@ export const PRODUCTS = [
     },
     {
       id: 'i214q8ui',
-      image: '/images/product/Bayleaf.jpg',
+      image: `${prefix}/images/product/Bayleaf.jpg`,
       name: 'bayleaf',
       price: 8500,
       stock: 15,
@@ -53,7 +55,7 @@ export const PRODUCTS = [
     },
     {
       id: 'no9qhs2g',
-      image: '/images/product/Cumin.jpg',
+      image: `${prefix}/images/product/Cumin.jpg`,
       name: 'cumin',
       price: 4500,
       stock: 50,
@@ -62,7 +64,7 @@ export const PRODUCTS = [
     },
     {
       id: 'c80gof76',
-      image: '/images/product/Marjoram.jpg',
+      image: `${prefix}/images/product/Marjoram.jpg`,
       name: 'marjoram',
       price: 4750,
       stock: 20,
@@ -70,7 +72,7 @@ export const PRODUCTS = [
     },
     {
       id: 'hg71r4st',
-      image: '/images/product/Chilli Flakes.jpg',
+      image: `${prefix}/images/product/Chilli Flakes.jpg`,
       name: 'chilli flake',
       price: 4500,
       stock: 10,
@@ -78,7 +80,7 @@ export const PRODUCTS = [
     },
     {
       id: '3k1m7gn6',
-      image: '/images/product/Chilli Powder.jpg',
+      image: `${prefix}/images/product/Chilli Powder.jpg`,
       name: 'chilli powder',
       price: 4500,
       stock: 18,
@@ -87,7 +89,7 @@ export const PRODUCTS = [
     },
     {
       id: '23uiybdb',
-      image: '/images/product/Paprika Powder.jpg',
+      image: `${prefix}/images/product/Paprika Powder.jpg`,
       name: 'paprika powder',
       price: 4500,
       stock: 30,
@@ -96,7 +98,7 @@ export const PRODUCTS = [
     },
     {
       id: 'pi5r0zkv',
-      image: '/images/product/Gelatine Powder.jpg',
+      image: `${prefix}/images/product/Gelatine Powder.jpg`,
       name: 'gelatine powder',
       price: 32500,
       stock: 22,
@@ -105,7 +107,7 @@ export const PRODUCTS = [
     },
     {
       id: '40vr3x0v',
-      image: '/images/product/Gelatine Sheets.jpg',
+      image: `${prefix}/images/product/Gelatine Sheets.jpg`,
       name: 'gelatine sheets',
       price: 7500,
       stock: 14,
@@ -114,7 +116,7 @@ export const PRODUCTS = [
     },
     {
       id: 'wv2qdw9n',
-      image: '/images/product/Garlic Powder.jpg',
+      image: `${prefix}/images/product/Garlic Powder.jpg`,
       name: 'garlic powder',
       price: 4000,
       stock: 60,
@@ -123,7 +125,7 @@ export const PRODUCTS = [
     },
     {
       id: '6mzoidmx',
-      image: '/images/product/Onion Powder.jpg',
+      image: `${prefix}/images/product/Onion Powder.jpg`,
       name: 'onion powder',
       price: 4500,
       stock: 30,
@@ -132,7 +134,7 @@ export const PRODUCTS = [
     },
     {
       id: 'ghw08tid',
-      image: '/images/product/Black Pepper.jpg',
+      image: `${prefix}/images/product/Black Pepper.jpg`,
       name: 'black pepper',
       price: 5750,
       stock: 25,
@@ -140,7 +142,7 @@ export const PRODUCTS = [
     },
     {
       id: 'micj3rca',
-      image: '/images/product/Black Pepper Powder.jpg',
+      image: `${prefix}/images/product/Black Pepper Powder.jpg`,
       name: 'black pepper powder',
       price: 6750,
       stock: 30,
@@ -148,7 +150,7 @@ export const PRODUCTS = [
     },
     {
       id: '9e8xqu5n',
-      image: '/images/product/White Pepper.jpg',
+      image: `${prefix}/images/product/White Pepper.jpg`,
       name: 'white pepper',
       price: 5750,
       stock: 25,
@@ -157,7 +159,7 @@ export const PRODUCTS = [
     },
     {
       id: 'rdn9rtga',
-      image: '/images/product/White Pepper Powder.jpg',
+      image: `${prefix}/images/product/White Pepper Powder.jpg`,
       name: 'white pepper powder',
       price: 6750,
       stock: 20,
@@ -166,7 +168,7 @@ export const PRODUCTS = [
     },
     {
       id: 'qimkgawd',
-      image: '/images/product/Cinnamon Sticks.jpg',
+      image: `${prefix}/images/product/Cinnamon Sticks.jpg`,
       name: 'cinnamon sticks',
       price: 5750,
       stock: 22,
@@ -175,7 +177,7 @@ export const PRODUCTS = [
     },
     {
       id: 'u2eqitjw',
-      image: '/images/product/Cinnamon Powder.jpg',
+      image: `${prefix}/images/product/Cinnamon Powder.jpg`,
       name: 'cinnamon powder',
       price: 7000,
       stock: 18,
@@ -183,7 +185,7 @@ export const PRODUCTS = [
     },
     {
       id: '5wv77es9',
-      image: '/images/product/Sechuan Pepper.jpg',
+      image: `${prefix}/images/product/Sechuan Pepper.jpg`,
       name: 'sechuan pepper',
       price: 13250,
       stock: 25,
@@ -192,7 +194,7 @@ export const PRODUCTS = [
     },
     {
       id: 'knl87lyv',
-      image: '/images/product/Lime Leaves.jpg',
+      image: `${prefix}/images/product/Lime Leaves.jpg`,
       name: 'lime leaf',
       price: 7750,
       stock: 25,
@@ -200,7 +202,7 @@ export const PRODUCTS = [
     },
     {
       id: 'sgbhysgj',
-      image: '/images/product/Lime Leaves Powder.jpg',
+      image: `${prefix}/images/product/Lime Leaves Powder.jpg`,
       name: 'lime leaf powder',
       price: 8500,
       stock: 20,
