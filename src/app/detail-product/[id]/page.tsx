@@ -10,6 +10,13 @@ export const metadata: Metadata = {
   description: "Choose your location for the movie.",
 };
 
+// Define generateStaticParams for dynamic routing
+export function generateStaticParams() {
+  return PRODUCTS.map((product) => ({
+    id: product.id.toString(),
+  }));
+}
+
 const DetailProductPage: React.FC<{ params: { id: string } }> = async ({ params }) => {
   const { id } = params;
 
@@ -26,7 +33,7 @@ const DetailProductPage: React.FC<{ params: { id: string } }> = async ({ params 
 
   return (
     <DefaultLayout>
-      <Breadcrumb pageName={`Detail Produk ${products.name}`}/>
+      <Breadcrumb pageName={`Detail Produk ${products.name}`} />
       <div className="mx-auto max-w-7xl">
         <DetailProduct products={products} />
       </div>
