@@ -5,6 +5,7 @@ import useLocalStorage from "@/hooks/useLocalStorage"; // Assuming the hook is i
 import { ProductCart } from "@/components/Products/DetailProduct";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
+import Image from "next/image";
 
 
 const CartPage = () => {
@@ -49,7 +50,7 @@ const CartPage = () => {
         {cart.map((item) => (
           <div key={item.id} className="flex items-center justify-between border-b py-4">
             <div className="flex items-center">
-              <img src={item.image} alt={item.name} className="w-16 h-16 object-cover mr-4" />
+              <Image width={16} height={16} src={item.image} alt={item.name} className="w-16 h-16 object-cover mr-4" />
               <div>
                 <h3 className="text-lg font-semibold">{item.name}</h3>
                 <span className="text-gray-500">Rp {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR",  maximumFractionDigits: 0, }).format(item.price)}</span>
