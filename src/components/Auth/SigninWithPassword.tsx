@@ -50,7 +50,7 @@ if (userAccount) {
     email: userAccount.email,
     remember: data.remember,
   });
-  window.location.href = "/products";
+  window.location.href = "/RAM/products";
   Swal.fire({
     icon: "success",
     title: "Berhasil",
