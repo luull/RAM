@@ -7,7 +7,7 @@ import SearchForm from "@/components/Header/SearchForm";
 import { prefix } from "@/utils/prefix";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import useLocalStorage from "@/hooks/useLocalStorage";
-import { ProductCart } from "../Products/DetailProduct";
+import { ProductCart } from "@/types/products";
 
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
@@ -100,10 +100,11 @@ const Header = (props: {
       <span className="relative">
         <ShoppingCartIcon width={20} height={20} />
         {/* Badge for the total items */}
-   
+          {cart?.length > 0 && (
           <span className="absolute bottom-5 flex justify-center items-center w-5 h-5 ml-5 text-xs font-semibold text-white bg-red rounded-full">
             {cart?.length ?? 0}
           </span>
+          )}
     
       </span>
     </Link>

@@ -1,212 +1,244 @@
 import { prefix } from "@/utils/prefix";
 
 export const PRODUCTS = [
-    {
-      id: 'oix1no6a',
-      image: `${prefix}/images/product/Oregano.jpg`,
-      name: 'oregano',
-      price: 5000,
-      stock: 20,
-      description: 'Oregano segar untuk hidangan beraroma dan memanggang.\n' +
-        'Berat bersih / Nett : 25gr'
-    },
-    {
-      id: '5qrrtm01',
-      image: `${prefix}/images/product/Rosemary.jpg`,
-      name: 'rosemary',
-      price: 5500,
-      stock: 15,
-      description: 'Rosemary segar untuk hidangan kaya rasa dan memanggang.\n' +
-        'Berat bersih / Nett : 25gr'
-    },
-    {
-      id: 'nuoo01s6',
-      image: `${prefix}/images/product/Parsley.jpg`,
-      name: 'parsley',
-      price: 9000,
-      stock: 30,
-      description: 'Parsley segar untuk garnish dan menambah rasa.\n' +
-        'Berat bersih / Nett : 25gr'
-    },
-    {
-      id: 'w0hnaz7g',
-      image: `${prefix}/images/product/Thyme.jpg`,
-      name: 'thyme',
-      price: 5750,
-      stock: 25,
-      description: 'Thyme segar untuk masakan gurih dan lezat.\nBerat bersih / Nett : 25gr'
-    },
-    {
-      id: 'oozlu8lk',
-      image: `${prefix}/images/product/Basil.jpg`,
-      name: 'basil',
-      price: 5250,
-      stock: 20,
-      description: 'Basil segar untuk hidangan Italia dan salad.\nBerat bersih / Nett : 25gr'
-    },
-    {
-      id: 'i214q8ui',
-      image: `${prefix}/images/product/Bayleaf.jpg`,
-      name: 'bayleaf',
-      price: 8500,
-      stock: 15,
-      description: 'Daun salam segar untuk kaldu dan masakan berkuah.\n' +
-        'Berat bersih / Nett : 25gr'
-    },
-    {
-      id: 'no9qhs2g',
-      image: `${prefix}/images/product/Cumin.jpg`,
-      name: 'cumin',
-      price: 4500,
-      stock: 50,
-      description: 'Jinten untuk menambah cita rasa pedas dan gurih.\n' +
-        'Berat bersih / Nett : 25gr'
-    },
-    {
-      id: 'c80gof76',
-      image: `${prefix}/images/product/Marjoram.jpg`,
-      name: 'marjoram',
-      price: 4750,
-      stock: 20,
-      description: 'Marjoram segar untuk bumbu masakan Eropa.\nBerat bersih / Nett : 25gr'
-    },
-    {
-      id: 'hg71r4st',
-      image: `${prefix}/images/product/Chilli Flakes.jpg`,
-      name: 'chilli flake',
-      price: 4500,
-      stock: 10,
-      description: 'Serpihan cabai pedas untuk taburan.\nBerat bersih / Nett : 25gr'
-    },
-    {
-      id: '3k1m7gn6',
-      image: `${prefix}/images/product/Chilli Powder.jpg`,
-      name: 'chilli powder',
-      price: 4500,
-      stock: 18,
-      description: 'Bubuk cabai untuk menambah pedas pada masakan.\n' +
-        'Berat bersih / Nett : 25gr'
-    },
-    {
-      id: '23uiybdb',
-      image: `${prefix}/images/product/Paprika Powder.jpg`,
-      name: 'paprika powder',
-      price: 4500,
-      stock: 30,
-      description: 'Bubuk paprika untuk rasa manis dan sedikit pedas.\n' +
-        'Berat bersih / Nett : 25gr'
-    },
-    {
-      id: 'pi5r0zkv',
-      image: `${prefix}/images/product/Gelatine Powder.jpg`,
-      name: 'gelatine powder',
-      price: 32500,
-      stock: 22,
-      description: 'Bubuk gelatin untuk membuat puding atau jeli.\n' +
-        'Berat bersih / Nett : 100gr'
-    },
-    {
-      id: '40vr3x0v',
-      image: `${prefix}/images/product/Gelatine Sheets.jpg`,
-      name: 'gelatine sheets',
-      price: 7500,
-      stock: 14,
-      description: 'Lembar gelatin untuk bahan jeli dan puding.\n' +
-        'Berat bersih / Nett : 1 kg isi 300 lembar'
-    },
-    {
-      id: 'wv2qdw9n',
-      image: `${prefix}/images/product/Garlic Powder.jpg`,
-      name: 'garlic powder',
-      price: 4000,
-      stock: 60,
-      description: 'Bubuk bawang putih untuk penyedap rasa masakan.\n' +
-        'Berat bersih / Nett : 25gr'
-    },
-    {
-      id: '6mzoidmx',
-      image: `${prefix}/images/product/Onion Powder.jpg`,
-      name: 'onion powder',
-      price: 4500,
-      stock: 30,
-      description: 'Bubuk bawang bombay untuk menambah aroma dan rasa.\n' +
-        'Berat bersih / Nett : 25gr'
-    },
-    {
-      id: 'ghw08tid',
-      image: `${prefix}/images/product/Black Pepper.jpg`,
-      name: 'black pepper',
-      price: 5750,
-      stock: 25,
-      description: 'Merica hitam untuk rasa pedas yang kuat.\nBerat bersih / Nett : 25gr'
-    },
-    {
-      id: 'micj3rca',
-      image: `${prefix}/images/product/Black Pepper Powder.jpg`,
-      name: 'black pepper powder',
-      price: 6750,
-      stock: 30,
-      description: 'Bubuk merica hitam untuk menambah pedas.\nBerat bersih / Nett : 25gr'
-    },
-    {
-      id: '9e8xqu5n',
-      image: `${prefix}/images/product/White Pepper.jpg`,
-      name: 'white pepper',
-      price: 5750,
-      stock: 25,
-      description: 'Merica putih untuk rasa pedas yang lebih lembut.\n' +
-        'Berat bersih / Nett : 25gr'
-    },
-    {
-      id: 'rdn9rtga',
-      image: `${prefix}/images/product/White Pepper Powder.jpg`,
-      name: 'white pepper powder',
-      price: 6750,
-      stock: 20,
-      description: 'Bubuk merica putih untuk rasa pedas yang halus.\n' +
-        'Berat bersih / Nett : 25gr'
-    },
-    {
-      id: 'qimkgawd',
-      image: `${prefix}/images/product/Cinnamon Sticks.jpg`,
-      name: 'cinnamon sticks',
-      price: 5750,
-      stock: 22,
-      description: 'Batang kayu manis untuk aroma manis dan wangi.\n' +
-        'Berat bersih / Nett : 25gr'
-    },
-    {
-      id: 'u2eqitjw',
-      image: `${prefix}/images/product/Cinnamon Powder.jpg`,
-      name: 'cinnamon powder',
-      price: 7000,
-      stock: 18,
-      description: 'Bubuk kayu manis untuk rasa manis dan hangat.\nBerat bersih / Nett : 25gr'
-    },
-    {
-      id: '5wv77es9',
-      image: `${prefix}/images/product/Sechuan Pepper.jpg`,
-      name: 'sechuan pepper',
-      price: 13250,
-      stock: 25,
-      description: 'Sechuan pepper untuk rasa pedas dan sedikit pahit.\n' +
-        'Berat bersih / Nett : 25gr'
-    },
-    {
-      id: 'knl87lyv',
-      image: `${prefix}/images/product/Lime Leaves.jpg`,
-      name: 'lime leaf',
-      price: 7750,
-      stock: 25,
-      description: 'Daun jeruk nipis segar untuk aroma segar.\nBerat bersih / Nett : 25gr'
-    },
-    {
-      id: 'sgbhysgj',
-      image: `${prefix}/images/product/Lime Leaves Powder.jpg`,
-      name: 'lime leaf powder',
-      price: 8500,
-      stock: 20,
-      description: 'Bubuk daun jeruk nipis untuk menambah aroma segar.\n' +
-        'Berat bersih / Nett : 25gr'
-    }
-  ]
+  {
+    id: 'O1G2R3E4G5O',
+    name: 'Oregano',
+    description: 'Oregano untuk menambah rasa khas pada masakan.\n',
+    image: `${prefix}/images/product/Oregano.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 5000 },
+      { gram: 50, price: 9500 },
+      { gram: 100, price: 9500 }
+    ]
+  },
+  {
+    id: 'R1O2S3E4M5A6R7Y',
+    name: 'Rosemary',
+    description: 'Rosemary memberikan rasa dan aroma khas pada masakan.\n',
+    image: `${prefix}/images/product/Rosemary.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 5500 },
+      { gram: 50, price: 10500 },
+      { gram: 100, price: 10500 }
+    ]
+  },
+  {
+    id: 'P1A2R3S4L5E',
+    name: 'Parsley',
+    description: 'Parsley memberikan kesegaran dan aroma pada masakan.\n',
+    image: `${prefix}/images/product/Parsley.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 9000 },
+      { gram: 50, price: 17500 },
+      { gram: 100, price: 17500 }
+    ]
+  },
+  {
+    id: 'T1H2Y3M4E',
+    name: 'Thyme',
+    description: 'Thyme memberikan aroma dan rasa yang khas pada masakan.\n',
+    image: `${prefix}/images/product/Thyme.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 5750 },
+      { gram: 50, price: 5750 },
+      { gram: 100, price: 5750 }
+    ]
+  },
+  {
+    id: 'B1A2S3I4L5',
+    name: 'Basil',
+    description: 'Basil memberikan aroma segar pada masakan.\n',
+    image: `${prefix}/images/product/Basil.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 5250 },
+      { gram: 50, price: 5250 },
+      { gram: 100, price: 5250 }
+    ]
+  },
+  {
+    id: 'B1A2Y3L4E5A6F',
+    name: 'Bayleaf',
+    description: 'Bayleaf memberikan rasa khas pada masakan.\n',
+    image: `${prefix}/images/product/Bayleaf.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 8500 },
+      { gram: 50, price: 10500 },
+      { gram: 100, price: 10500 }
+    ]
+  },
+  {
+    id: 'C1U2M3I4N5',
+    name: 'Cumin',
+    description: 'Cumin memberikan rasa khas pedas pada masakan.\n',
+    image: `${prefix}/images/product/Cumin.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 4500 },
+      { gram: 50, price: 8500 },
+      { gram: 100, price: 8500 }
+    ]
+  },
+  {
+    id: 'M1A2R3J4O5R6A7M',
+    name: 'Marjoram',
+    description: 'Marjoram memberikan aroma lembut pada masakan.\n',
+    image: `${prefix}/images/product/Marjoram.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 4750 },
+      { gram: 50, price: 9000 },
+      { gram: 100, price: 9000 }
+    ]
+  },
+  {
+    id: 'C1H2I3L4L5I6F7L8A9K',
+    name: 'Chilli Flake',
+    description: 'Chilli Flake memberikan rasa pedas pada masakan.\n',
+    image: `${prefix}/images/product/Chilli Flakes.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 4500 },
+      { gram: 50, price: 8500 },
+      { gram: 100, price: 8500 }
+    ]
+  },
+  {
+    id: 'C1H2I3L4L5I6P7O8W9D',
+    name: 'Chilli Powder',
+    description: 'Chilli Powder memberikan rasa pedas dan warna merah pada masakan.\n',
+    image: `${prefix}/images/product/Chilli Powder.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 4500 },
+      { gram: 50, price: 8500 },
+      { gram: 100, price: 8500 }
+    ]
+  },
+  {
+    id: 'P1A2P3R4I5K6A7P8O9W9D',
+    name: 'Paprika Powder',
+    description: 'Paprika Powder untuk warna dan rasa khas pada masakan.\n',
+    image: `${prefix}/images/product/Paprika Powder.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 4500 },
+      { gram: 50, price: 8500 },
+      { gram: 100, price: 8500 }
+    ]
+  },
+  {
+    id: 'G1E2L3A4T5I6N7E8P9O10W',
+    name: 'Gelatine Powder',
+    description: 'Gelatine Powder digunakan untuk mengental dan memberikan tekstur pada makanan.\n',
+    image: `${prefix}/images/product/Gelatine Powder.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 100, price: 32500 },
+      { gram: 200, price: 63500 },
+      { gram: 500, price: 63500 }
+    ]
+  },
+  {
+    id: 'G1A2R3L4I5C6P7O8W9D',
+    name: 'Garlic Powder',
+    description: 'Garlic Powder memberikan rasa bawang putih yang kuat pada masakan.\n',
+    image: `${prefix}/images/product/Garlic Powder.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 4000 },
+      { gram: 50, price: 7500 },
+      { gram: 100, price: 7500 }
+    ]
+  },
+  {
+    id: 'O1N2I3O4N5P6O7W8D',
+    name: 'Onion Powder',
+    description: 'Onion Powder memberikan rasa dan aroma bawang pada masakan.\n',
+    image: `${prefix}/images/product/Onion Powder.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 4500 },
+      { gram: 50, price: 8500 },
+      { gram: 100, price: 8500 }
+    ]
+  },
+  {
+    id: 'B1L2A3C4K5P6E7P8P9E9R',
+    name: 'Black Pepper',
+    description: 'Black Pepper memberikan rasa pedas pada masakan.\n',
+    image: `${prefix}/images/product/Black Pepper.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 5750 },
+      { gram: 50, price: 11000 },
+      { gram: 100, price: 11000 }
+    ]
+  },
+  {
+    id: 'B1L2A3C4K5P6E7P8P9E9R9P10O11W',
+    name: 'Black Pepper Powder',
+    description: 'Black Pepper Powder memberikan rasa pedas halus pada masakan.\n',
+    image: `${prefix}/images/product/Black Pepper Powder.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 6750 },
+      { gram: 50, price: 13000 },
+      { gram: 100, price: 13000 }
+    ]
+  },
+  {
+    id: 'W1H2I3T4E5P6E7P8P9E9R',
+    name: 'White Pepper',
+    description: 'White Pepper memberikan rasa pedas lembut pada masakan.\n',
+    image: `${prefix}/images/product/White Pepper.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 5750 },
+      { gram: 50, price: 11000 },
+      { gram: 100, price: 11000 }
+    ]
+  },
+  {
+    id: 'W1H2I3T4E5P6E7P8P9E9R9P10O11W',
+    name: 'White Pepper Powder',
+    description: 'White Pepper Powder memberikan rasa pedas halus pada masakan.\n',
+    image: `${prefix}/images/product/White Pepper Powder.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 6750 },
+      { gram: 50, price: 13000 },
+      { gram: 100, price: 13000 }
+    ]
+  },
+  {
+    id: 'C1I2N3N4A5M6O7N8S9T1I2C3K',
+    name: 'Cinnamon Sticks',
+    description: 'Cinnamon Sticks memberikan aroma manis dan hangat pada masakan.\n',
+    image: `${prefix}/images/product/Cinnamon Sticks.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 4750 },
+      { gram: 50, price: 9000 },
+      { gram: 100, price: 9000 }
+    ]
+  },
+  {
+    id: 'L1I2M3E4L5EAF6P7O8W9D',
+    name: 'Lime Leaf Powder',
+    description: 'Lime Leaf Powder memberikan rasa segar dan aroma khas daun jeruk nipis pada masakan.\n',
+    image: `${prefix}/images/product/Lime Leaves Powder.jpg`,
+    stock: 100,
+    sizes: [
+      { gram: 25, price: 8500 },
+      { gram: 50, price: 16500 },
+      { gram: 100, price: 16500 }
+    ]
+  }
+];

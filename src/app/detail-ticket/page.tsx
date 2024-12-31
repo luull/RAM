@@ -1,25 +1,28 @@
-
-import { Metadata } from "next";
-import DefaultLayout from "@/components/Layouts/DefaultLaout";
-import React from "react";
+"use client"
+import DefaultLayout from "@/components/Layouts/DefaultLaout"; // Fixed typo in 'DefaultLayout'
+import React, { useEffect, useState } from "react";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
-import TransactionSummary from "@/components/Products/TransactionSummary";
-import SuccessPayment from "@/components/Products/SuccessPaymentPage";
-import DetailTicket from "@/components/Products/DetailTicket";
+import Receipt from "@/components/Products/Receipt";
+import useLocalStorage from "@/hooks/useLocalStorage";
+import { ProductCart } from "@/types/products";
 
-export const metadata: Metadata = {
-  title: "RAM | Detail Ticket",
-  description: "Detail Ticket",
-};
-  
-const DetailTicketPage: React.FC = async() => {
-    
-  // const movies = await fetchMovies();
-    
+
+const DetailTicketPage: React.FC = () => {
+  const [cart, setCart] = useLocalStorage<ProductCart[]>("cart", []);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>; 
+  }
+
   return (
     <DefaultLayout>
-      <Breadcrumb pageName="Detail Ticket" />
-      {/* <DetailTicket movies={movies}/> */}
+      <Breadcrumb pageName="Bill Transaksi" />
+      <Receipt data={cart} barcodeValue={123123123123} />
     </DefaultLayout>
   );
 };

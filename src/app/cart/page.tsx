@@ -1,17 +1,17 @@
+
 "use client";
-import { useState, useEffect } from "react";
 import { ShoppingCartIcon, TrashIcon } from "@heroicons/react/24/outline";
 import useLocalStorage from "@/hooks/useLocalStorage"; // Assuming the hook is in the 'hooks' directory
-import { ProductCart } from "@/components/Products/DetailProduct";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import DefaultLayout from "@/components/Layouts/DefaultLaout";
 import Image from "next/image";
-
+import { ProductCart } from "@/types/products";
+import PaymentMethodModal from "@/components/Products/PaymentModal";
+import { useEffect, useState } from "react";
 
 const CartPage = () => {
-  // Fetch cart data from localStorage using the custom hook
   const [cart, setCart] = useLocalStorage<ProductCart[]>("cart", []);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const handleRemoveItem = (itemId: string) => {
     const updatedCart = cart.filter(item => item.id.toString() !== itemId.toString());
     setCart(updatedCart);
@@ -27,6 +27,11 @@ const CartPage = () => {
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
+  useEffect(()=> {
+    if(cart.some((item)=> item.status === "success")){
+      setCart([])
+    }
+  },[cart])
 
   if (cart.length === 0) {
     return (
@@ -50,10 +55,11 @@ const CartPage = () => {
         {cart.map((item) => (
           <div key={item.id} className="flex items-center justify-between border-b py-4">
             <div className="flex items-center">
-              <Image width={16} height={16} src={item.image} alt={item.name} className="w-16 h-16 object-cover mr-4" />
+              <Image width={100} height={100} src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded-md mr-4" />
               <div>
                 <h3 className="text-lg font-semibold">{item.name}</h3>
-                <span className="text-gray-500">Rp {new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR",  maximumFractionDigits: 0, }).format(item.price)}</span>
+                <span className="text-gray-500">{new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR",  maximumFractionDigits: 0, }).format(item.price)}</span>
+                <h3 className="text-sm font-semibold">{item.packaging}</h3>
               </div>
             </div>
 
@@ -87,12 +93,17 @@ const CartPage = () => {
       {/* Checkout Button */}
     <div className="flex flex-row justify-end">
     <button
-        onClick={() => alert("Proceeding to checkout...")}
+        onClick={() =>setIsModalOpen(true)}
         className="mt-6 w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-opacity-90 focus:outline-none"
       >
         Lakukan pembayaran
       </button>
     </div>
+    <PaymentMethodModal
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        transactionDetails={cart} 
+      />
     </div>
     </DefaultLayout>
   );

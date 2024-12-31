@@ -5,6 +5,7 @@ import { XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { prefix } from "@/utils/prefix";
 import { paymentMethods } from "@/types/payment";
+import { ProductCart } from "@/types/products";
 
 const PaymentMethodModal = ({
   isOpen,
@@ -13,7 +14,7 @@ const PaymentMethodModal = ({
 }: {
   isOpen: boolean;
   onClose: () => void;
-  transactionDetails: any;
+  transactionDetails: ProductCart[];
 }) => {
   const [selectedMethod, setSelectedMethod] = useState<string | null>(null);
   const router = useRouter();
@@ -36,12 +37,6 @@ const PaymentMethodModal = ({
       const virtualAccount = generateVirtualAccount(bankCode);
   
       const queryString = new URLSearchParams({
-        location: transactionDetails.location ?? "",
-        date: transactionDetails.date ?? "", 
-        time: transactionDetails.time ?? "",
-        title: transactionDetails.movie ?? "",
-        totalPrice: transactionDetails.totalPrice.toString(), 
-        seatNumber: transactionDetails.selectedSeats.join(", "), 
         paymentMethod: selectedMethod ?? "", 
         virtualCode: virtualAccount ?? "",
       }).toString();

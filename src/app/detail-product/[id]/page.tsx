@@ -7,7 +7,7 @@ import DetailProduct from "@/components/Products/DetailProduct";
 
 export const metadata: Metadata = {
   title: "RAM | Detail Produk",
-  description: "Choose your location for the movie.",
+  description: "Pilih dan tentukan produkmu.",
 };
 
 // Define generateStaticParams for dynamic routing

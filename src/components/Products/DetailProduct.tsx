@@ -1,28 +1,35 @@
 "use client";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { ProductTypes } from "@/app/products/page";
 import Image from "next/image";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import useLocalStorage from "@/hooks/useLocalStorage";
+import { ProductCart, ProductTypes } from "@/types/products";
 
-export interface ProductCart {
-  id: string;
-  name: string;
-  image: string;
-  price: number;
-  quantity: number;
-  description: string;
-}
+// Helper function to generate a random string for ID
+const generateRandomId = () => {
+  return Math.random().toString(36).substring(2, 10); // Generates a random string of 8 characters
+};
 
-const ProductDetail = ({ products }: any) => {
+const ProductDetail = ({ products }: { products: ProductTypes }) => {
   const [cart, setCart] = useLocalStorage<ProductCart[]>("cart", []);
   const [quantity, setQuantity] = useState<number>(1);
+  const [packaging, setPackaging] = useState<string>("25gr");
+  const [price, setPrice] = useState<number>(products.sizes[0].price);  // Default to the first size
   const [error, setError] = useState<string>("");
 
   if (!products) {
     return <p>Loading...</p>;
   }
+
+  const handlePackagingChange = (gram: number) => {
+    setPackaging(`${gram}gr`);
+
+    // Find the selected size and update the price
+    const selectedSize = products.sizes.find((size) => size.gram === gram);
+    if (selectedSize) {
+      setPrice(selectedSize.price);
+    }
+  };
 
   const handleAddToCart = () => {
     if (quantity < 1) {
@@ -35,23 +42,37 @@ const ProductDetail = ({ products }: any) => {
       return;
     }
 
-    setError("");
+    setError(""); // Clear error when the input is valid
 
-    const productExistsInCart = cart.find(item => item.id === products.id);
+    const productExistsInCart = cart.find(
+      (item) => item.name === products.name && item.packaging === packaging
+    );
 
     if (productExistsInCart) {
-      const updatedCart = cart.map(item =>
-        item.id === products.id
+      const updatedCart = cart.map((item) =>
+        item.name === products.name && item.packaging === packaging
           ? { ...item, quantity: item.quantity + quantity }
           : item
       );
       setCart(updatedCart);
     } else {
-      const updatedCart = [...cart, { ...products, quantity }];
+      const updatedCart = [
+        ...cart,
+        {
+          id: generateRandomId(), // Use the random string ID
+          name: products.name,
+          image: products.image,
+          price,
+          quantity,
+          packaging,
+          description: products.description,
+          status: "pending"
+        },
+      ];
       setCart(updatedCart);
     }
 
-    setQuantity(1);
+    setQuantity(1); // Reset quantity to 1
     alert("Product added to cart");
   };
 
@@ -80,7 +101,7 @@ const ProductDetail = ({ products }: any) => {
               style: "currency",
               currency: "IDR",
               maximumFractionDigits: 0,
-            }).format(products.price)}
+            }).format(price)}
           </span>
 
           <span className="text-sm text-gray-500 dark:text-gray-400">
@@ -89,7 +110,34 @@ const ProductDetail = ({ products }: any) => {
         </div>
 
         <div className="mb-6">
-          <label htmlFor="quantity" className="block text-sm font-medium text-gray-800 dark:text-white mb-2">
+          <label
+            htmlFor="packaging"
+            className="block text-sm font-medium text-gray-800 dark:text-white mb-2"
+          >
+            Pilih Kemasan
+          </label>
+          <div className="flex space-x-4">
+            {products.sizes.map((size) => (
+              <button
+                key={size.gram}
+                onClick={() => handlePackagingChange(size.gram)}
+                className={`px-4 py-2 rounded-md border ${
+                  packaging === `${size.gram}gr`
+                    ? "bg-secondary text-white"
+                    : "bg-white text-gray-800 border-gray-300"
+                } hover:bg-secondary hover:text-white`}
+              >
+                {size.gram} gram
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-6">
+          <label
+            htmlFor="quantity"
+            className="block text-sm font-medium text-gray-800 dark:text-white mb-2"
+          >
             Quantity
           </label>
           <input

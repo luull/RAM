@@ -5,20 +5,16 @@
     import { paymentMethodsSummary } from '@/types/payment'; 
     import { QRCodeCanvas } from "qrcode.react";
 
-import Receipt from './Receipt';
-import { ArrowLongRightIcon } from '@heroicons/react/24/outline';
-import { CheckBadgeIcon } from '@heroicons/react/16/solid';
+    import Receipt from './Receipt';
+    import { ArrowLongRightIcon } from '@heroicons/react/24/outline';
+    import { CheckBadgeIcon } from '@heroicons/react/16/solid';
+import useLocalStorage from '@/hooks/useLocalStorage';
+import { ProductCart } from '@/types/products';
 
     const TransactionSummary = () => {
     const searchParams = useSearchParams();
     const router = useRouter()
-
-    const title = searchParams.get('title');
-    const location = searchParams.get('location');
-    const date = searchParams.get('date');
-    const time = searchParams.get('time');
-    const totalPrice = searchParams.get('totalPrice');
-    const seatNumber = searchParams.get('seatNumber');
+    const [cart, setCart] = useLocalStorage<ProductCart[]>("cart", []);
     const paymentMethod = searchParams.get('paymentMethod');
     const virtualCode = searchParams.get('virtualCode');
 
@@ -47,18 +43,11 @@ import { CheckBadgeIcon } from '@heroicons/react/16/solid';
         }
     };
     const handleRedirect = () => {
-        if (title && location && date && time && totalPrice && seatNumber && paymentMethod && virtualCode) {
+        if (paymentMethod && virtualCode) {
           const queryParams = new URLSearchParams({
-            location: location,
-            title: title,
-            totalPrice: totalPrice,
-            seatNumber: seatNumber,
             paymentMethod: paymentMethod,
             virtualCode: virtualCode,
-            date: date,
-            time: time,
           }).toString();
-    
           router.push(`/payment-success?${queryParams}`);
         } else {
           alert("Pastikan semua data sudah dipilih!");
@@ -126,7 +115,7 @@ import { CheckBadgeIcon } from '@heroicons/react/16/solid';
          <div className="flex flex-row justify-center">
          <button
          onClick={handleRedirect}
-                  className="bg-green w-full items-center font-bold flex flex-row justify-center space-x-2 disabled:bg-gray-4 text-white py-2 px-6 rounded-md hover:bg-opacity-90"
+                  className="bg-primary w-full items-center font-bold flex flex-row justify-center space-x-2 disabled:bg-gray-4 text-white py-2 px-6 rounded-md hover:bg-opacity-90"
                 >
                   <CheckBadgeIcon className="w-5"/>
                   <span className="flex flex-row space-x-1">
@@ -136,16 +125,6 @@ import { CheckBadgeIcon } from '@heroicons/react/16/solid';
                 </button>
          </div>
             </div>
-            {/* Kartu Ringkasan Transaksi */}
-            <Receipt
-                title={title}
-                location={location}
-                date={date}
-                time={time}
-                seatNumber={seatNumber}
-                totalPrice={totalPrice}
-                barcodeValue={123123123123} 
-                />
 
 
     </div>
