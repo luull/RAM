@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { Product } from "@/types/product";
+// import { Product } from "@/types/product";
 import { prefix } from "@/utils/prefix";
 
-const productData: Product[] = [
+const productData: any[] = [
   {
     image: `${prefix}/images/product/product-01.png`,
     name: "Apple Watch Series 7",
