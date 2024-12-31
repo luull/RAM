@@ -53,7 +53,7 @@ const SuccessPayment = () => {
               
                 <button
                onClick={handleRedirect}
-                  className="bg-secondary my-5 w-70 font-bold flex flex-row justify-between disabled:bg-gray-4 text-white py-2 px-6 rounded-md hover:bg-opacity-90"
+                  className="bg-primary my-5 w-70 font-bold flex flex-row justify-between disabled:bg-gray-4 text-white py-2 px-6 rounded-md hover:bg-opacity-90"
                 >
                   <span className="flex flex-row space-x-3">
                   Lihat Detail Transaksi saya

@@ -32,7 +32,7 @@ const Receipt = ({
   });
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-full max-w-md mx-auto border-2 border-dashed border-gray-300">
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-full max-w-md border-2 border-dashed border-gray-300">
       <div className="flex flex-col items-center mb-6">
         <Image 
           src={`${prefix}/images/logo/RAM-dark.png`}

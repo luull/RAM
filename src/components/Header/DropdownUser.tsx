@@ -3,10 +3,11 @@ import Link from "next/link";
 import Image from "next/image";
 import ClickOutside from "@/components/ClickOutside";
 import { prefix } from "@/utils/prefix";
+import useLocalStorage from "@/hooks/useLocalStorage";
 
 const DropdownUser = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
+  const [user, setUser] = useLocalStorage<any>("user", {});
   return (
     <ClickOutside onClick={() => setDropdownOpen(false)} className="relative">
       <Link
@@ -18,7 +19,7 @@ const DropdownUser = () => {
           <Image
             width={112}
             height={112}
-            src={`${prefix}/images/user/user31.png`}
+            src={`${prefix}/images/user/default.png`}
             style={{
               width: "auto",
               height: "auto",
@@ -29,7 +30,7 @@ const DropdownUser = () => {
         </span>
 
         <span className="flex items-center gap-2 font-medium text-dark dark:text-dark-6">
-          <span className="hidden lg:block">Luull</span>
+          <span className="hidden lg:block">{user.username}</span>
 
           <svg
             className={`fill-current duration-200 ease-in ${dropdownOpen && "rotate-180"}`}
@@ -59,7 +60,7 @@ const DropdownUser = () => {
               <Image
                 width={112}
                 height={112}
-                src={`${prefix}/images/user/user31.png`}
+                src={`${prefix}/images/user/default.png`}
                 style={{
                   width: "auto",
                   height: "auto",
@@ -73,10 +74,10 @@ const DropdownUser = () => {
 
             <span className="block">
               <span className="block font-medium text-dark dark:text-white">
-                Luull
+                {user.username}
               </span>
               <span className="block font-medium text-dark-5 dark:text-dark-6">
-                luull@atmin.com
+                {user.email}
               </span>
             </span>
           </div>
@@ -142,7 +143,10 @@ const DropdownUser = () => {
             </li> */}
           </ul>
           <div className="p-2.5">
-            <button className="flex w-full items-center gap-2.5 rounded-[7px] p-2.5 text-sm font-medium text-dark-4 duration-300 ease-in-out hover:bg-gray-2 hover:text-dark dark:text-dark-6 dark:hover:bg-dark-3 dark:hover:text-white lg:text-base">
+            <Link href="#" onClick={()=> {
+              setUser({})
+              window.location.href = "/";
+            }} className="flex w-full items-center gap-2.5 rounded-[7px] p-2.5 text-sm font-medium text-dark-4 duration-300 ease-in-out hover:bg-gray-2 hover:text-dark dark:text-dark-6 dark:hover:bg-dark-3 dark:hover:text-white lg:text-base">
               <svg
                 className="fill-current"
                 width="18"
@@ -168,7 +172,7 @@ const DropdownUser = () => {
                 </defs>
               </svg>
               Logout
-            </button>
+            </Link>
           </div>
         </div>
       )}

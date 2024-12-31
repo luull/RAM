@@ -86,7 +86,7 @@ const PaymentMethodModal = ({
         </div>
         <button
           onClick={handleSubmit}
-          className="w-full mt-6 py-2 px-4 bg-secondary text-white rounded-md hover:bg-secondary-dark disabled:bg-gray-400"
+          className="w-full mt-6 py-2 px-4 bg-primary text-white rounded-md hover:bg-secondary-dark disabled:bg-gray-400"
           disabled={!selectedMethod}
         >
           Konfirmasi Metode Pembayaran

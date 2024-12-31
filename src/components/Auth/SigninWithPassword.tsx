@@ -1,14 +1,73 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
-
+import useLocalStorage from "@/hooks/useLocalStorage";
+import Swal from 'sweetalert2'
 export default function SigninWithPassword() {
   const [data, setData] = useState({
     remember: false,
+    email: "",
+    password: "",
   });
+  const [user, setUser] = useLocalStorage<any>("user", {});
+
+  const account = [
+    {
+      username: "luull",
+      email : "luull@gmail.com",
+      password : "luull123",
+    },
+    {
+      username: "farah",
+      email : "farah@gmail.com",
+      password : "farah123",
+    },
+    {
+      username: "yunus",
+      email : "yunus@gmail.com",
+      password : "yunus123",
+    },
+    {
+      username: "abim",
+      email : "abim@gmail.com",
+      password : "abim123",
+    },
+    {
+      username: "desi",
+      email : "desi@gmail.com",
+      password : "desi123",
+    }
+  ]
+
+  const handleSignin = () => {
+const userAccount = account.find(
+  (acc) => acc.email === data.email && acc.password === data.password
+);
+
+if (userAccount) {
+  setUser({
+    username: userAccount.username,
+    email: userAccount.email,
+    remember: data.remember,
+  });
+  window.location.href = "/products";
+  Swal.fire({
+    icon: "success",
+    title: "Berhasil",
+    text: "Selamat datang!",
+  });
+} else {
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: "Email atau Password anda salah!",
+  });
+}
+    
+  }
 
   return (
-    <form>
+    <div>
       <div className="mb-4">
         <label
           htmlFor="email"
@@ -21,6 +80,12 @@ export default function SigninWithPassword() {
             type="email"
             placeholder="Enter your email"
             name="email"
+            onChange={(e)=> {
+              setData((prev)=> ({
+                ...prev,  
+                email: e.target.value
+              }))
+            }}  
             className="w-full rounded-lg border border-stroke bg-transparent py-[15px] pl-6 pr-11 font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
           />
 
@@ -57,6 +122,12 @@ export default function SigninWithPassword() {
             name="password"
             placeholder="Enter your password"
             autoComplete="password"
+            onChange={(e)=> {
+              setData((prev)=> ({
+                ...prev,  
+                password: e.target.value
+              }))
+            }}  
             className="w-full rounded-lg border border-stroke bg-transparent py-[15px] pl-6 pr-11 font-medium text-dark outline-none focus:border-primary focus-visible:shadow-none dark:border-dark-3 dark:bg-dark-2 dark:text-white dark:focus:border-primary"
           />
 
@@ -96,6 +167,12 @@ export default function SigninWithPassword() {
             name="remember"
             id="remember"
             className="peer sr-only"
+            onChange={(e)=> {
+              setData((prev)=> ({
+                ...prev,  
+                remember: e.target.checked
+              }))
+            }}  
           />
           <span
             className={`mr-2.5 inline-flex h-5.5 w-5.5 items-center justify-center rounded-md border border-stroke bg-white text-white text-opacity-0 peer-checked:border-primary peer-checked:bg-primary peer-checked:text-opacity-100 dark:border-stroke-dark dark:bg-white/5 ${
@@ -129,14 +206,15 @@ export default function SigninWithPassword() {
       </div>
 
       <div className="mb-4.5">
-     <Link
-          href="/products"
-          type="submit"
-          className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-lg bg-secondary p-4 font-medium text-white transition hover:bg-opacity-90"
+     <button
+          onClick={handleSignin}
+          // type="submit"
+          disabled={!data.email || !data.password}
+          className="flex w-full disabled:bg-grey cursor-pointer items-center justify-center gap-2 rounded-lg bg-secondary p-4 font-medium text-white transition hover:bg-opacity-90"
         >
           Sign In
-        </Link>
+        </button>
       </div>
-    </form>
+    </div>
   );
 }

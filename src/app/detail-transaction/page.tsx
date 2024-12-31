@@ -7,7 +7,7 @@ import useLocalStorage from "@/hooks/useLocalStorage";
 import { ProductCart } from "@/types/products";
 
 
-const DetailTicketPage: React.FC = () => {
+const DetailTransactionPage: React.FC = () => {
   const [cart, setCart] = useLocalStorage<ProductCart[]>("cart", []);
   const [loading, setLoading] = useState(true);
 
@@ -27,4 +27,4 @@ const DetailTicketPage: React.FC = () => {
   );
 };
 
-export default DetailTicketPage;
+export default DetailTransactionPage;
