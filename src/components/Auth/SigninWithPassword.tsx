@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import Link from "next/link";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import Swal from 'sweetalert2'
+import { useRouter } from "next/navigation";
 export default function SigninWithPassword() {
+  const router = useRouter()
   const [data, setData] = useState({
     remember: false,
     email: "",
@@ -50,7 +52,7 @@ if (userAccount) {
     email: userAccount.email,
     remember: data.remember,
   });
-  window.location.href = "/RAM/products";
+  router.push("/products");
   Swal.fire({
     icon: "success",
     title: "Berhasil",
