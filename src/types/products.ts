@@ -7,6 +7,7 @@ export interface ProductCart {
     description: string;
     packaging: string;
     status?:string;
+    grams?: number;
   }
 
   export interface ProductTypes {

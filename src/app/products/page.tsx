@@ -1,13 +1,12 @@
- import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
+import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import DefaultLayout from "@/components/Layouts/DefaultLaout"; // Corrected typo: DefaultLaout -> DefaultLayout
 import ProductsCard from "@/components/Products/ProductsCard";
 import { PRODUCTS } from "@/const/product";
-
 const ProductDisplayPage = async () => {
   return (
     <DefaultLayout>
       <div className="mx-auto max-w-7xl">
-        <Breadcrumb pageName="Daftar Product" />
+        <Breadcrumb pageName="Daftar Produk" />
 
         <div className="min-h-screen bg-gray-100 dark:bg-[#03000d19]">
           <div className="container mx-auto py-8 px-4">

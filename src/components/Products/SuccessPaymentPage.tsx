@@ -24,7 +24,7 @@ const SuccessPayment = () => {
         { ...item, status: "success" })
       );
       setCart(updatedCart);
-      router.push(`/detail-ticket?${queryParams}`);
+      router.push(`/detail-transaction?${queryParams}`);
     } else {
       alert("Pastikan semua data sudah dipilih!");
     }

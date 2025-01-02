@@ -6,7 +6,7 @@ import { prefix } from "@/utils/prefix";
 import useLocalStorage from "@/hooks/useLocalStorage";
 
 const ProfileBox = () => {
-  const [user, setUser] = useLocalStorage<any>("user", {});
+  const [user, setUser] = useLocalStorage<any>("user", "");
   return (
     <>
       <div className="overflow-hidden rounded-[10px] bg-white shadow-1 dark:bg-gray-dark dark:shadow-card">

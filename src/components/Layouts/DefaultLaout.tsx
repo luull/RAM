@@ -2,12 +2,14 @@
 import React, { useState, ReactNode } from "react";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
+import useAuthRedirect from "@/hooks/useAuthRedirect";
 
 export default function DefaultLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  useAuthRedirect()
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <>
