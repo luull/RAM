@@ -13,6 +13,7 @@ const Header = (props: {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
 }) => {
+  const [user] = useLocalStorage<any>("user", "");
   const [cart] = useLocalStorage<ProductCart[]>("cart", []);
   return (
     <header className="sticky top-0 z-999 flex w-full border-b border-stroke bg-white dark:border-stroke-dark dark:bg-gray-dark">
@@ -92,6 +93,8 @@ const Header = (props: {
 
             {/* <!-- Notification Menu Area --> */}
             {/* <DropdownNotification /> */}
+            {user.role !== "admin" && (
+
             <li>
             <Link
       href="/cart"
@@ -109,6 +112,7 @@ const Header = (props: {
       </span>
     </Link>
         </li>
+            )}
             {/* <!-- Notification Menu Area --> */}
           </ul>
 

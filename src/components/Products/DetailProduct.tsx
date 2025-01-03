@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import useLocalStorage from "@/hooks/useLocalStorage";
 import { ProductCart, ProductTypes } from "@/types/products";
+import Swal from "sweetalert2";
 
 // Helper function to generate a random string for ID
 const generateRandomId = () => {
@@ -66,14 +67,23 @@ const ProductDetail = ({ products }: { products: ProductTypes }) => {
           quantity,
           packaging,
           description: products.description,
-          status: "pending"
+          status: "Pending"
         },
       ];
       setCart(updatedCart);
     }
 
-    setQuantity(1); // Reset quantity to 1
-    alert("Product added to cart");
+    setQuantity(1); 
+    Swal.fire({
+      title: 'Berhasil!',
+      text: 'Berhasil Menambahkan ke Keranjang',
+      icon: 'success',
+      confirmButtonText: 'Close'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.reload();
+      }
+    });
   };
 
   return (

@@ -8,12 +8,22 @@ import Link from "next/link";
 import { useSearchParams,useRouter } from "next/navigation";
 
 const SuccessPayment = () => {
-    const [cart, setCart] = useLocalStorage<ProductCart[]>("cart", []);
+  const [cart, setCart] = useLocalStorage<ProductCart[]>("cart", []);
+  const [dataTransaction, setDataTransaction] = useLocalStorage<any>("transaction", []);
+  const [user] = useLocalStorage<any>("user", "");
   const router = useRouter()
   const searchParams = useSearchParams();
   const paymentMethod = searchParams.get('paymentMethod');
   const virtualCode = searchParams.get('virtualCode');
-
+  function generateRandomString(length: number): string {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
   const handleRedirect = () => {
     if (paymentMethod && virtualCode) {
       const queryParams = new URLSearchParams({
@@ -21,8 +31,31 @@ const SuccessPayment = () => {
         virtualCode: virtualCode,
       }).toString();
       const updatedCart = cart.map((item) => (
-        { ...item, status: "success" })
+        { ...item, status: "Verifikasi" })
       );
+
+
+      const randomString = generateRandomString(10);
+      if (dataTransaction) {
+        const updatedTransaksi = [
+          ...(Array.isArray(dataTransaction) ? dataTransaction : []), // Fallback ke array kosong jika dataTransaction bukan array
+          {
+          idTrx : randomString,
+          usernameData: user.username,
+          data: cart,
+          status: "Verifikasi"
+        },
+      ];
+      setDataTransaction(updatedTransaksi);
+    } else {
+      const newTransaction = {
+        idTrx : randomString,
+        usernameData: user.username,
+        data: cart,
+        status: "Verifikasi"
+        };
+        setDataTransaction([newTransaction]);
+      }
       setCart(updatedCart);
       router.push(`/detail-transaction?${queryParams}`);
     } else {

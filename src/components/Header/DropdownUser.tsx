@@ -143,7 +143,7 @@ const DropdownUser = () => {
               </Link>
             </li> */}
           </ul>
-          <div className="p-2.5">
+          <div className="p-2.5 cursor-pointer">
             <div onClick={()=> {
               localStorage.removeItem('user');
               router.push("/");

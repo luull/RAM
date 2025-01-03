@@ -1,20 +1,15 @@
     'use client';
 
-    import { useSearchParams, useRouter } from 'next/navigation';
-    import { useState, useEffect } from 'react';
-    import { paymentMethodsSummary } from '@/types/payment'; 
-    import { QRCodeCanvas } from "qrcode.react";
+    import { paymentMethodsSummary } from '@/types/payment';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { QRCodeCanvas } from "qrcode.react";
+import { useEffect, useState } from 'react';
 
-    import Receipt from './Receipt';
-    import { ArrowLongRightIcon } from '@heroicons/react/24/outline';
     import { CheckBadgeIcon } from '@heroicons/react/16/solid';
-import useLocalStorage from '@/hooks/useLocalStorage';
-import { ProductCart } from '@/types/products';
 
     const TransactionSummary = () => {
     const searchParams = useSearchParams();
     const router = useRouter()
-    const [cart, setCart] = useLocalStorage<ProductCart[]>("cart", []);
     const paymentMethod = searchParams.get('paymentMethod');
     const virtualCode = searchParams.get('virtualCode');
 

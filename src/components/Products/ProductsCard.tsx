@@ -63,7 +63,7 @@ const ProductsCard = ({ productsData }: ProductsProps) => {
           packaging: `${size.gram}gr`,
           price: size.price,
           quantity: 1,
-          status: "pending"
+          status: "Pending"
         }];
         setCart(updatedCart);
       }

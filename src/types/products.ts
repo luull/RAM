@@ -1,5 +1,6 @@
 export interface ProductCart {
     id: string;
+    usernameData?:string;
     name: string;
     image: string;
     price: number;
@@ -9,7 +10,12 @@ export interface ProductCart {
     status?:string;
     grams?: number;
   }
-
+  export interface TransactionType {
+    idTrx: string;
+    usernameData: string;
+    data: ProductCart[];
+    status: string;
+  }
   export interface ProductTypes {
     id: string;
     name: string;

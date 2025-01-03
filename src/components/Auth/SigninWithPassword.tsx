@@ -18,26 +18,31 @@ export default function SigninWithPassword() {
       username: "luull",
       email : "luull@gmail.com",
       password : "luull123",
+      role : "admin"
     },
     {
       username: "farah",
       email : "farah@gmail.com",
       password : "farah123",
+      role : "user"
     },
     {
       username: "yunus",
       email : "yunus@gmail.com",
       password : "yunus123",
+      role : "user"
     },
     {
       username: "abim",
       email : "abim@gmail.com",
       password : "abim123",
+      role : "user"
     },
     {
       username: "desi",
       email : "desi@gmail.com",
       password : "desi123",
+      role : "user"
     }
   ]
 
@@ -50,13 +55,18 @@ if (userAccount) {
   setUser({
     username: userAccount.username,
     email: userAccount.email,
+    role: userAccount.role,
     remember: data.remember,
   });
-  router.push("/products");
+  if(userAccount.role === "admin"){
+    router.push("/data-transaction");
+  }else{
+    router.push("/products");
+  }
   Swal.fire({
     icon: "success",
-    title: "Berhasil",
-    text: "Selamat datang!",
+    title: "Berhasil Login",
+    text: "Selamat datang barudak!",
   });
 } else {
   Swal.fire({

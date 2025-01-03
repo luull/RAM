@@ -41,10 +41,14 @@ const CartPage = () => {
   };
 
   useEffect(() => {
-    if (cart.some((item) => item.status === "success")) {
+    if (cart.some((item) => item.status === "Verifikasi")) {
+      setCart([]);
+    }
+    if (cart.some((item) => item.status === "Berhasil")) {
       setCart([]);
     }
   }, [cart]);
+
 
   if (cart.length === 0) {
     return (
