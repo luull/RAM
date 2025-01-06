@@ -9,6 +9,9 @@ export interface ProductCart {
     packaging: string;
     status?:string;
     grams?: number;
+    address:string,
+    courier: string,
+    shippingCost:number,
   }
   export interface TransactionType {
     idTrx: string;

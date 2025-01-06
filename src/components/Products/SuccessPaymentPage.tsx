@@ -1,6 +1,6 @@
 'use client'
 import useLocalStorage from "@/hooks/useLocalStorage";
-import { ProductCart } from "@/types/products";
+import { ProductCart, TransactionType } from "@/types/products";
 import { prefix } from "@/utils/prefix";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
@@ -9,7 +9,7 @@ import { useSearchParams,useRouter } from "next/navigation";
 
 const SuccessPayment = () => {
   const [cart, setCart] = useLocalStorage<ProductCart[]>("cart", []);
-  const [dataTransaction, setDataTransaction] = useLocalStorage<any>("transaction", []);
+  const [dataTransaction, setDataTransaction] = useLocalStorage<TransactionType[]>("transaction", []);
   const [user] = useLocalStorage<any>("user", "");
   const router = useRouter()
   const searchParams = useSearchParams();

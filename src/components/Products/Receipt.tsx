@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 import Barcode from 'react-barcode';
-
 interface ReceiptProps {
   data: ProductCart[];
   barcodeValue: number;
@@ -15,8 +14,9 @@ const Receipt = ({
   data,
   barcodeValue,
 }: ReceiptProps) => {
-  const [setCart] = useLocalStorage<ProductCart[]>("cart", []);
-  const totalPrice = data.reduce((total, item) => total + item.price * item.quantity, 0);
+  const [cart, setCart] = useLocalStorage<ProductCart[]>("cart", []);
+  const subtotalPrice = data.reduce((total, item) => total + item.price * item.quantity, 0);
+  const totalPrice = data.reduce((total, item) => total + item.price * item.quantity + item.shippingCost, 0);
   const router = useRouter();
   const searchParams = useSearchParams();
   const paymentMethod = searchParams.get('paymentMethod');
@@ -32,7 +32,14 @@ const Receipt = ({
   });
 
   return (
+    <>
     <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-full max-w-md border-2 border-dashed border-gray-300">
+    <button   className="w-full mb-6 py-2 px-4 bg-secondary text-white rounded-md hover:bg-secondary-dark disabled:bg-gray-400" onClick={()=> {
+     router.push("/data-transaction");
+        setCart([]);
+      }}>Lihat List Transaksi Saya
+      
+    </button>
       <div className="flex flex-col items-center mb-6">
         <Image 
           src={`${prefix}/images/logo/RAM-dark.png`}
@@ -68,13 +75,25 @@ const Receipt = ({
         <hr className="my-4 border-t-2 border-dashed border-gray-300" />
         {data.map((item, index) => (
           <div key={index} className="flex justify-between mb-0">
-            <span className="font-normal">{item.name} ({item.packaging})</span>
+            <span className="font-normal">{item.name} ({item.packaging}) | x{item.quantity} </span>
             <p className="font-normal mb-0">
               {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(item.price * item.quantity)}
             </p>
           </div>
         ))}
-        <div className="flex justify-between">
+        <div className="flex justify-between mb-0">
+          <span className="font-semibold text-sm">Subtotal</span>
+          <p className="font-semibold text-sm mb-0">
+            Rp {Number(subtotalPrice)?.toLocaleString("id-ID")}
+          </p>
+        </div>
+        <div className="flex justify-between mb-0">
+          <span className="font-semibold text-sm">Ongkos pengiriman</span>
+          <p className="font-semibold text-sm mb-0">
+            Rp {Number(data[0].shippingCost)?.toLocaleString("id-ID")}
+          </p>
+        </div>
+        <div className="flex justify-between mb-0">
           <span className="font-bold">Total Harga</span>
           <p className="font-bold text-lg">
             Rp {Number(totalPrice)?.toLocaleString("id-ID")}
@@ -97,7 +116,9 @@ const Receipt = ({
         )}
         <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">{barcodeValue}</p>
       </div>
+
     </div>
+    </>
   );
 };
 

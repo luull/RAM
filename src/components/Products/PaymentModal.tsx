@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
@@ -9,10 +9,12 @@ import { ProductCart } from "@/types/products";
 
 const PaymentMethodModal = ({
   isOpen,
+  handleClose,
   onClose,
   transactionDetails,
 }: {
   isOpen: boolean;
+  handleClose?: (value:boolean)=> void;
   onClose: () => void;
   transactionDetails: ProductCart[];
 }) => {
@@ -25,6 +27,7 @@ const PaymentMethodModal = ({
   };
   
   const handleSubmit = () => {
+    handleClose && handleClose(true)
     if (selectedMethod) {
       const bankCode = selectedMethod === "Bank BRI" ? "002" : 
                        selectedMethod === "Bank BCA" ? "014" : 
@@ -47,8 +50,6 @@ const PaymentMethodModal = ({
       alert("Pilih metode pembayaran terlebih dahulu!");
     }
   };
-  
-  
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-99999">

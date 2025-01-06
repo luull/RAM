@@ -96,7 +96,7 @@ const TableThree = () => {
           <tbody>
             {dataTransaction.map((item: any, index: number) => {
               const totalTransaction = item.data.reduce(
-                (total: number, s: { price: number; quantity: number }) => total + s.price * s.quantity,
+                (total: number, s: ProductCart) => total + s.price * s.quantity + s.shippingCost,
                 0
               );
 
@@ -105,7 +105,7 @@ const TableThree = () => {
                   <td className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7.5 ${index === dataTransaction.length - 1 ? "border-b-0" : "border-b"}`}>
                     {item.data.map((items: any) => (
                       <h5 key={items.name} className="text-dark dark:text-white">
-                        {items.name} - {items.packaging} ({items.quantity})
+                        {items.name} - {items.packaging} ( x{items.quantity} )
                       </h5>
                     ))}
                   </td>

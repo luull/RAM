@@ -8,6 +8,7 @@ import PaymentMethodModal from "@/components/Products/PaymentModal";
 import { useEffect, useState } from "react";
 import { PRODUCTS } from "@/const/product";
 import { ProductCart } from "@/types/products";
+import ShippingDetailsModal from "@/components/Products/ShippingModal";
 
 const CartPage = () => {
   const [cart, setCart] = useLocalStorage<ProductCart[]>("cart", []);
@@ -39,15 +40,6 @@ const CartPage = () => {
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
-
-  useEffect(() => {
-    if (cart.some((item) => item.status === "Verifikasi")) {
-      setCart([]);
-    }
-    if (cart.some((item) => item.status === "Berhasil")) {
-      setCart([]);
-    }
-  }, [cart]);
 
 
   if (cart.length === 0) {
@@ -130,7 +122,7 @@ const CartPage = () => {
                   <button
                     onClick={() => handleRemoveItem(item.id)}
                     className="text-red-500 mt-5 md:mt-0 hover:text-red-700"
-                  >
+                    >
                     <TrashIcon width={20} height={20} />
                   </button>
                 </div>
@@ -157,11 +149,12 @@ const CartPage = () => {
     Lakukan pembayaran
   </button>
 </div>
-        <PaymentMethodModal
+        <ShippingDetailsModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           transactionDetails={cart}
         />
+
       </div>
     </DefaultLayout>
   );
