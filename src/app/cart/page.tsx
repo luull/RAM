@@ -152,14 +152,14 @@ const CartPage = () => {
         </div>
 
         {/* Checkout Button */}
-        <div className="flex flex-row justify-end">
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="mt-6 w-full bg-primary text-white py-2 px-4 rounded-lg hover:bg-opacity-90 focus:outline-none"
-          >
-            Lakukan pembayaran
-          </button>
-        </div>
+        <div className="fixed bottom-0 left-0 w-full md:w-[calc(100%-300px)] bg-white dark:bg-gray-900 border-t border-gray-300 dark:border-gray-700 px-4 py-3 z-10 md:left-auto md:right-0">
+  <button
+    onClick={() => setIsModalOpen(true)}
+    className="w-full bg-primary text-white py-3 px-4 rounded-lg hover:bg-opacity-90 focus:outline-none"
+  >
+    Lakukan pembayaran
+  </button>
+</div>
         <PaymentMethodModal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
