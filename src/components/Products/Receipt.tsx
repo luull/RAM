@@ -16,7 +16,7 @@ const Receipt = ({
 }: ReceiptProps) => {
   const [cart, setCart] = useLocalStorage<ProductCart[]>("cart", []);
   const subtotalPrice = data.reduce((total, item) => total + item.price * item.quantity, 0);
-  const totalPrice = data.reduce((total, item) => total + item.price * item.quantity + item.shippingCost, 0);
+  const totalPrice = data.reduce((total, item) => total + item.price * item.quantity + (item.shippingCost ?? 0), 0);
   const router = useRouter();
   const searchParams = useSearchParams();
   const paymentMethod = searchParams.get('paymentMethod');
