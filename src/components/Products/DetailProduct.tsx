@@ -60,7 +60,7 @@ const ProductDetail = ({ products }: { products: ProductTypes }) => {
       const updatedCart = [
         ...cart,
         {
-          id: generateRandomId(), // Use the random string ID
+          id: generateRandomId(), 
           name: products.name,
           image: products.image,
           price,
