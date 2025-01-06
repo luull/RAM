@@ -75,7 +75,7 @@ const Receipt = ({
         <hr className="my-4 border-t-2 border-dashed border-gray-300" />
         {data.map((item, index) => (
           <div key={index} className="flex justify-between mb-0">
-            <span className="font-normal">{item.name} ({item.packaging}) | x{item.quantity} </span>
+            <span className="font-normal">{item.name} ({item.packaging}) | ( x{item.quantity} ) </span>
             <p className="font-normal mb-0">
               {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(item.price * item.quantity)}
             </p>

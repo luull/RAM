@@ -1,6 +1,5 @@
 'use client'
 import useLocalStorage from "@/hooks/useLocalStorage";
-import { Package } from "@/types/package";
 import { ProductCart, TransactionType } from "@/types/products";
 import Swal from "sweetalert2";
 
@@ -14,6 +13,7 @@ const TableThree = () => {
     month: 'long',
     day: 'numeric',
   });
+
   const handleReject = (id: string) => {
     Swal.fire({
       title: 'Are you sure?',
@@ -65,12 +65,21 @@ const TableThree = () => {
     });
   };
 
+  const sortedDataTransaction = [...dataTransaction].sort((a, b) => {
+    if (a.status === "Verifikasi" && b.status !== "Verifikasi") return -1;
+    if (a.status !== "Verifikasi" && b.status === "Verifikasi") return 1;
+    return 0
+  });
+
   return (
     <div className="rounded-[10px] border border-stroke bg-white p-4 shadow-1 dark:border-dark-3 dark:bg-gray-dark dark:shadow-card sm:p-7.5">
       <div className="max-w-full overflow-x-auto">
         <table className="w-full table-auto">
           <thead>
             <tr className="bg-[#F7F9FC] text-left dark:bg-dark-2">
+              <th className="min-w-[220px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7.5">
+                ID Transaksi
+              </th>
               <th className="min-w-[220px] px-4 py-4 font-medium text-dark dark:text-white xl:pl-7.5">
                 Produk
               </th>
@@ -94,7 +103,7 @@ const TableThree = () => {
             </tr>
           </thead>
           <tbody>
-            {dataTransaction.map((item: any, index: number) => {
+            {sortedDataTransaction.map((item: any, index: number) => {
               const totalTransaction = item.data.reduce(
                 (total: number, s: ProductCart) => total + s.price * s.quantity + (s.shippingCost ?? 0),
                 0
@@ -102,29 +111,34 @@ const TableThree = () => {
 
               return (
                 <tr key={item.idTrx}>
-                  <td className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7.5 ${index === dataTransaction.length - 1 ? "border-b-0" : "border-b"}`}>
+                  <td className={`border-[#eee] px-4 py-4 dark:border-dark-3 ${index === sortedDataTransaction.length - 1 ? "border-b-0" : "border-b"}`}>
+                    <p className="text-dark dark:text-white">
+                      {item.idTrx}
+                    </p>
+                  </td>
+                  <td className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pl-7.5 ${index === sortedDataTransaction.length - 1 ? "border-b-0" : "border-b"}`}>
                     {item.data.map((items: any) => (
                       <h5 key={items.name} className="text-dark dark:text-white">
                         {items.name} - {items.packaging} ( x{items.quantity} )
                       </h5>
                     ))}
                   </td>
-                  <td className={`border-[#eee] text-center px-4 py-4 dark:border-dark-3 ${index === dataTransaction.length - 1 ? "border-b-0" : "border-b"}`}>
+                  <td className={`border-[#eee] text-center px-4 py-4 dark:border-dark-3 ${index === sortedDataTransaction.length - 1 ? "border-b-0" : "border-b"}`}>
                     <p className="text-dark dark:text-white">
                       {item.usernameData}
                     </p>
                   </td>
-                  <td className={`border-[#eee] text-center px-4 py-4 dark:border-dark-3 ${index === dataTransaction.length - 1 ? "border-b-0" : "border-b"}`}>
+                  <td className={`border-[#eee] text-center px-4 py-4 dark:border-dark-3 ${index === sortedDataTransaction.length - 1 ? "border-b-0" : "border-b"}`}>
                     <p className="text-dark dark:text-white">
                       {new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(totalTransaction)}
                     </p>
                   </td>
-                  <td className={`border-[#eee] text-center px-4 py-4 dark:border-dark-3 ${index === dataTransaction.length - 1 ? "border-b-0" : "border-b"}`}>
+                  <td className={`border-[#eee] text-center px-4 py-4 dark:border-dark-3 ${index === sortedDataTransaction.length - 1 ? "border-b-0" : "border-b"}`}>
                     <p className="text-dark dark:text-white">
                       {transactionDate}
                     </p>
                   </td>
-                  <td className={`border-[#eee] text-center px-4 py-4 dark:border-dark-3 ${index === dataTransaction.length - 1 ? "border-b-0" : "border-b"}`}>
+                  <td className={`border-[#eee] text-center px-4 py-4 dark:border-dark-3 ${index === sortedDataTransaction.length - 1 ? "border-b-0" : "border-b"}`}>
                     <p className={`inline-flex rounded-full px-3.5 py-1 text-body-sm font-medium ${
                       item.status === "Berhasil"
                         ? "bg-[#219653]/[0.08] text-[#219653]"
@@ -136,7 +150,7 @@ const TableThree = () => {
                     </p>
                   </td>
                   {user.role === "admin" && item.status !== "Berhasil" && item.status !== "Gagal" && (
-                    <td className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pr-7.5 ${index === dataTransaction.length - 1 ? "border-b-0" : "border-b"}`}>
+                    <td className={`border-[#eee] px-4 py-4 dark:border-dark-3 xl:pr-7.5 ${index === sortedDataTransaction.length - 1 ? "border-b-0" : "border-b"}`}>
                       <div className="flex items-center justify-end space-x-3.5">
                         <button onClick={() => handleReject(item.idTrx)} className="text-red hover:text-red">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
