@@ -96,7 +96,7 @@ const TableThree = () => {
           <tbody>
             {dataTransaction.map((item: any, index: number) => {
               const totalTransaction = item.data.reduce(
-                (total: number, s: ProductCart) => total + s.price * s.quantity + s.shippingCost,
+                (total: number, s: ProductCart) => total + s.price * s.quantity + (s.shippingCost ?? 0),
                 0
               );
 
