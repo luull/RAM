@@ -69,7 +69,7 @@ const CartPage = () => {
     <DefaultLayout>
       <Breadcrumb pageName={`Keranjang`} />
       <div className="mx-auto max-w-7xl">
-        <div>
+        <div className="mb-24">
           {cart.map((item) => {
             const product = PRODUCTS.find((prod) => prod.id === item.id);
 
@@ -139,20 +139,17 @@ const CartPage = () => {
           })}
         </div>
 
-        {/* Total Price */}
-        <div className="flex justify-between items-center mt-6">
-          <h2 className="text-xl font-semibold dark:text-white text-gray-800">Total:</h2>
-          <span className="text-xl font-bold text-secondary">
-            {new Intl.NumberFormat("id-ID", {
-              style: "currency",
-              currency: "IDR",
-              maximumFractionDigits: 0,
-            }).format(calculateTotal())}
-          </span>
-        </div>
-
-        {/* Checkout Button */}
         <div className="fixed bottom-0 left-0 w-full md:w-[calc(100%-300px)] bg-white dark:bg-gray-900 border-t border-gray-300 dark:border-gray-700 px-4 py-3 z-10 md:left-auto md:right-0">
+  <div className="flex justify-between items-center mb-3">
+    <h2 className="text-lg font-semibold dark:text-white text-gray-800">Total:</h2>
+    <span className="text-lg font-bold text-secondary">
+      {new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        maximumFractionDigits: 0,
+      }).format(calculateTotal())}
+    </span>
+  </div>
   <button
     onClick={() => setIsModalOpen(true)}
     className="w-full bg-primary text-white py-3 px-4 rounded-lg hover:bg-opacity-90 focus:outline-none"
