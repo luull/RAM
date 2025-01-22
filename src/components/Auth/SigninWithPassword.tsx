@@ -21,6 +21,18 @@ export default function SigninWithPassword() {
       role : "admin"
     },
     {
+      username: "admin",
+      email : "admin@gmail.com",
+      password : "admin123",
+      role : "admin"
+    },
+    {
+      username: "user",
+      email : "user@gmail.com",
+      password : "user123",
+      role : "user"
+    },
+    {
       username: "farah",
       email : "farah@gmail.com",
       password : "farah123",
