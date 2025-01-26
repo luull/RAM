@@ -171,7 +171,6 @@ export default function Home() {
             id="message"
             name="message"
             className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-            rows="4"
             placeholder="Tulis pesan Anda"
             required
           ></textarea>
