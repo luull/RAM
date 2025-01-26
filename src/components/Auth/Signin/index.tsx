@@ -15,17 +15,17 @@ export default function Signin() {
       <div className="my-6 flex items-center justify-center">
         <span className="block h-px w-full bg-stroke dark:bg-dark-3"></span>
         <div className="block w-full min-w-fit bg-white px-3 text-center font-medium dark:bg-gray-dark">
-          Or sign in with email
+          Atau login dari gugel
         </div>
         <span className="block h-px w-full bg-stroke dark:bg-dark-3"></span>
       </div>
-      <GoogleSigninButton text="Sign in" />
+      <GoogleSigninButton text="Login dari" />
 
       <div className="mt-6 text-center">
         <p>
-          Don’t have any account?{" "}
+          Belum punya akun ?{" "}
           <Link href="/auth/signup" className="text-primary">
-            Sign Up
+            Daftar
           </Link>
         </p>
       </div>

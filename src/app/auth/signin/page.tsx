@@ -8,8 +8,8 @@ import Signin from "@/components/Auth/Signin";
 import { prefix } from "@/utils/prefix";
 
 export const metadata: Metadata = {
-  title: "RAM | Sign In",
-  description: "Sign In",
+  title: "RAM | Login",
+  description: "Login",
 };
 
 const SignIn: React.FC = () => {
@@ -17,11 +17,11 @@ const SignIn: React.FC = () => {
     // <DefaultLayout>
      
 
-      <div className="rounded-[10px] bg-white shadow-1 dark:bg-gray-dark dark:shadow-card">
+      <div className="rounded-[10px] mt-15 bg-white shadow-1 dark:bg-gray-dark dark:shadow-card">
         <div className="flex flex-wrap items-center">
           <div className="w-full xl:w-1/2">
             <div className="w-full p-4 sm:p-12.5 xl:p-15">
-          <Breadcrumb pageName="Sign In" />
+          <Breadcrumb pageName="Login" />
           <Signin />
           
             </div>

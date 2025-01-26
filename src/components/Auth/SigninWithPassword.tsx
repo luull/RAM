@@ -12,6 +12,8 @@ export default function SigninWithPassword() {
     password: "",
   });
   const [user, setUser] = useLocalStorage<any>("user", {});
+  const [userDaftar, setUserDaftar] = useLocalStorage<any>("user-sign", []);
+
 
   const account = [
     {
@@ -62,15 +64,19 @@ export default function SigninWithPassword() {
 const userAccount = account.find(
   (acc) => acc.email === data.email && acc.password === data.password
 );
+const userAccountSign = userDaftar.find(
+  (acc:any) => acc.email === data.email && acc.password === data.password
+);
 
-if (userAccount) {
+if (userAccount || userAccountSign) {
   setUser({
-    username: userAccount.username,
-    email: userAccount.email,
-    role: userAccount.role,
+    username: userAccount?.username || userAccountSign?.username,
+    email: userAccount?.email || userAccountSign?.email,
+    role: userAccount?.role || userAccountSign?.role,
+    address: userAccountSign?.address ?? "",
     remember: data.remember,
   });
-  if(userAccount.role === "admin"){
+  if(userAccount?.role === "admin" || userAccountSign?.role === "admin"){
     router.push("/data-transaction");
   }else{
     router.push("/products");
@@ -102,7 +108,7 @@ if (userAccount) {
         <div className="relative">
           <input
             type="email"
-            placeholder="Enter your email"
+            placeholder="Masukkan email"
             name="email"
             onChange={(e)=> {
               setData((prev)=> ({
@@ -144,7 +150,7 @@ if (userAccount) {
           <input
             type="password"
             name="password"
-            placeholder="Enter your password"
+            placeholder="Masukkan password"
             autoComplete="password"
             onChange={(e)=> {
               setData((prev)=> ({
@@ -218,14 +224,14 @@ if (userAccount) {
               />
             </svg>
           </span>
-          Remember me
+          Ingat saya
         </label>
 
         <Link
           href="/auth/forgot-password"
           className="select-none font-satoshi text-base font-medium text-dark underline duration-300 hover:text-primary dark:text-white dark:hover:text-primary"
         >
-          Forgot Password?
+          Lupa Password?
         </Link>
       </div>
 
@@ -236,7 +242,7 @@ if (userAccount) {
           disabled={!data.email || !data.password}
           className="flex w-full disabled:bg-grey cursor-pointer items-center justify-center gap-2 rounded-lg bg-secondary p-4 font-medium text-white transition hover:bg-opacity-90"
         >
-          Sign In
+          Login
         </button>
       </div>
     </div>

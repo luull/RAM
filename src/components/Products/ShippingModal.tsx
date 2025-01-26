@@ -17,7 +17,8 @@ const ShippingDetailsModal = ({
   onClose: () => void;
   transactionDetails: ProductCart[];
 }) => {
-  const [address, setAddress] = useState("");
+  const [user, setUser] = useLocalStorage<any>("user", {});
+  const [address, setAddress] = useState(user?.address || "");
   const [cart, setCart] = useLocalStorage<ProductCart[]>("cart", []);
   const [selectedCourier, setSelectedCourier] = useState<string | null>(null);
   const [shippingCost, setShippingCost] = useState<number>(0);
