@@ -86,7 +86,7 @@ export default function Home() {
   <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
     <div className="flex justify-center">
       <Image
-        src={`${prefix}/images/team/yunus.jpeg`}
+        src={`${prefix}/images/team/yunus-kantor.png`}
         alt="Tentang Kami"
         width={400}
         height={300}
@@ -127,12 +127,12 @@ export default function Home() {
                 <section id="clients" className="p-16 text-center bg-gray-100">
                     <h2 className="text-4xl font-bold text-primary">Client Kami</h2>
                     <div className="flex flex-col md:flex-row mt-15 space-y-10 md:space-y-0 items-center md:space-x-10 justify-center">
-                        <Image src={`${prefix}/images/payment/bri.png`} alt="BRI" width={120} height={50} />
-                        <Image src={`${prefix}/images/payment/bca.png`} alt="BCA" width={120} height={50} />
-                        <Image src={`${prefix}/images/payment/mandiri.png`} alt="Mandiri" width={120} height={50} />
-                        <Image src={`${prefix}/images/payment/gopay.png`} alt="GoPay" width={120} height={50} />
-                        <Image src={`${prefix}/images/payment/dana.png`} alt="Dana" width={120} height={50} />
-                        <Image src={`${prefix}/images/payment/shopeepay.png`} alt="ShopeePay" width={120} height={50} />
+                        <Image src={`${prefix}/images/client/alfa.png`} alt="Alfamart" width={120} height={50} />
+                        <Image src={`${prefix}/images/client/indo.png`} alt="Indomaret" width={120} height={50} />
+                        <Image src={`${prefix}/images/client/super.png`} alt="Superindo" width={120} height={50} />
+                        <Image src={`${prefix}/images/client/gs.png`} alt="GS Supermarket" width={120} height={50} />
+                        <Image src={`${prefix}/images/client/farmers.png`} alt="Farmers" width={120} height={50} />
+                        <Image src={`${prefix}/images/client/tiptop.png`} alt="tiptop" width={120} height={50} />
                     </div>
                     <p className="mt-8 text-gray-600 max-w-3xl mx-auto">
                         Tempat kuliner terhormat ini mempercayakan kami untuk memberikan bahan-bahan berkualitas tinggi dan pengalaman rasa yang luar biasa untuk pelanggan mereka.
