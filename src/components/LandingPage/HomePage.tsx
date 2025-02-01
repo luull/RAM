@@ -88,7 +88,7 @@ export default function Home() {
       <Image
         src={`${prefix}/images/team/yunus-kantor.png`}
         alt="Tentang Kami"
-        width={400}
+        width={600}
         height={300}
         className='object-cover'
       />
@@ -103,7 +103,7 @@ export default function Home() {
       </p>
       <p className="mt-4 text-gray-600">
         <strong>Sejarah Kami</strong><br />
-        RAM didirikan pada tahun 2010 oleh seorang pengusaha muda bernama Rina Adelia Mustika, yang memiliki hasrat mendalam terhadap dunia kuliner. Sebagai seorang anak yang tumbuh di tengah keluarga yang gemar memasak, Rina sejak kecil sudah mengenal berbagai macam bumbu tradisional yang digunakan dalam masakan rumah tangga. Namun, seiring berjalannya waktu, ia menyadari bahwa banyak bumbu yang diproduksi secara massal tidak memiliki kualitas atau rasa yang memadai.
+        RAM didirikan pada tahun 2010 oleh seorang pengusaha muda bernama Yunus, yang memiliki hasrat mendalam terhadap dunia kuliner. Sebagai seorang anak yang tumbuh di tengah keluarga yang gemar memasak, Rina sejak kecil sudah mengenal berbagai macam bumbu tradisional yang digunakan dalam masakan rumah tangga. Namun, seiring berjalannya waktu, ia menyadari bahwa banyak bumbu yang diproduksi secara massal tidak memiliki kualitas atau rasa yang memadai.
       </p>
       <p className="mt-4 text-gray-600">
         Dengan tekad untuk membawa cita rasa asli dan berkualitas tinggi, Rina memulai perjalanan RAM dengan misi untuk menawarkan bumbu yang terbuat dari bahan-bahan alami tanpa bahan pengawet atau pewarna buatan. Kami berfokus pada keberlanjutan dan integritas, bekerja sama dengan petani lokal untuk memastikan bahwa bahan baku kami berasal dari sumber yang etis dan berkualitas.
