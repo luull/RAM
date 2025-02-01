@@ -86,7 +86,7 @@ export default function Home() {
   <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
     <div className="flex justify-center">
       <Image
-        src={`${prefix}/images/team/team-01.png`}
+        src={`${prefix}/images/team/yunus.jpeg`}
         alt="Tentang Kami"
         width={400}
         height={300}
